@@ -30,6 +30,19 @@ var fun = function lang(l) {
 }
 ```
 
+```ts
+// TypeScript code with syntax highlighting.
+let fun: any = "yay";
+constructor(){
+  
+}
+```
+
+```java
+// TypeScript code with syntax highlighting.
+System.out.println("Yay");
+```
+
 ```ruby
 # Ruby code with syntax highlighting
 GitHubPages::Dependencies.gems.each do |gem, version|
