@@ -13,7 +13,7 @@ server.ssl.key-alias=tomcat
 
 However, when I tried to connect to the supposedly secured server with postman or my Angular app, it would give me the error _“unable to connect over https”._
 
-I decided to take a different approach.  Because my server and client applications are hosted on the same instance, I realized I didn’t have to secure communication between these two applications with an SSL certificate.  Instead, I had to focus on securing communication between each user’s browser and the front end client app.
+I decided to take a different approach.  Because my server and client applications are hosted on the same instance, I realized I didn’t have to secure communication between these two applications with an SSL certificate.  Instead, I had to focus on secturing communication between each user’s browser and the front end client app.
 
 After a lot of trial and error, I found a way to secure my site, all from the Nginx webserver config on AWS, which I use to serve up the Angular app. This involves serving up your SSL certificate and key along with the app through Nginx, so when users access your app, their browsers pull in the certificate as well.
 
@@ -54,6 +54,8 @@ From here, you need access to your certificate. If you purchased your SSL certif
 3. The key to the certificate
 
 To download your certificate from GoDaddy, go to “manage my certificates” from the homepage. From there, you will see this page:
+
+![GoDaddy](../assets/images/post_ssl_not_secure/goDaddy.png)
 
 Click on “Download” and select the type “Tomcat”. Three files will be downloaded as a zip. Extract them, and you will see two .crt files and a .pem file. One of the .crt files will have the word “bundle”, meaning it is the root chain of certificates. Open both .crt files in a text editor and you’ll see that the “bundle” file has multiple certificates and the other file only has one and is your intermediate certificate.
 
