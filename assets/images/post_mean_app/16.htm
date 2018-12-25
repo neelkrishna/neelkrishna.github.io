@@ -1,0 +1,2128 @@
+<!DOCTYPE html>
+<!-- saved from url=(0117)https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/ -->
+<html lang="en" class="gr__knowledgecollisions_wordpress_com"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://knowledgecollisions.wordpress.com/xmlrpc.php">
+
+<title>Creating a MEAN Application With Authentication Using Angular 2 – knowledge collisions</title>
+<link rel="dns-prefetch" href="https://s2.wp.com/">
+<link rel="dns-prefetch" href="https://s1.wp.com/">
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="alternate" type="application/rss+xml" title="knowledge collisions » Feed" href="https://knowledgecollisions.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="knowledge collisions » Comments Feed" href="https://knowledgecollisions.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="knowledge collisions » Creating a MEAN Application With Authentication Using Angular 2 Comments Feed" href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/feed/">
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s0.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1532082729h&ver=5.0.2"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./16_files/wp-emoji-release.min.js" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="all-css-0-1" href="./16_files/saved_resource(1)" type="text/css" media="all">
+<style id="wpcom-admin-bar-inline-css" type="text/css">
+
+			.admin-bar {
+				position: inherit !important;
+				top: auto !important;
+			}
+			.admin-bar .goog-te-banner-frame {
+				top: 32px !important
+			}
+			@media screen and (max-width: 782px) {
+				.admin-bar .goog-te-banner-frame {
+					top: 46px !important;
+				}
+			}
+			@media screen and (max-width: 480px) {
+				.admin-bar .goog-te-banner-frame {
+					position: absolute;
+				}
+			}
+		
+</style>
+<link rel="stylesheet" id="escutcheon-fonts-css" href="./16_files/css(1)" type="text/css" media="all">
+<link rel="stylesheet" id="all-css-2-1" href="./16_files/saved_resource(2)" type="text/css" media="all">
+<link rel="stylesheet" id="print-css-3-1" href="./16_files/global-print.css" type="text/css" media="print">
+<link rel="stylesheet" id="all-css-4-1" href="./16_files/saved_resource(3)" type="text/css" media="all">
+<script type="text/javascript" src="./16_files/saved_resource(4)"></script><style type="text/css"></style>
+<link rel="stylesheet" id="all-css-0-2" href="./16_files/style(1).css" type="text/css" media="all">
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s2.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://knowledgecollisions.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Persisting User Input in Android (&gt; 5.0)" href="https://knowledgecollisions.wordpress.com/2016/08/27/persisting-user-input-in-android-5-0/">
+<link rel="next" title="Car Maintenance App Part 1: Creating a helloWorld Node/Express Server from scratch" href="https://knowledgecollisions.wordpress.com/2017/07/21/car-maintenance-app-part-1-creating-a-helloworld-nodeexpress-server-from-scratch/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/">
+<link rel="shortlink" href="https://wp.me/p5pwxR-4e">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fknowledgecollisions.wordpress.com%2F2016%2F08%2F27%2Fcreating-a-mean-application-with-authentication-using-angular-2%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fknowledgecollisions.wordpress.com%2F2016%2F08%2F27%2Fcreating-a-mean-application-with-authentication-using-angular-2%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Creating a MEAN Application With Authentication Using Angular 2">
+<meta property="og:url" content="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/">
+<meta property="og:description" content="Today we are going to create a web application that uses Angular 2 and NodeJS/ExpressJS, along with MongoDB. You can expect the final application to look like this: We have three types of domain ob…">
+<meta property="article:published_time" content="2016-08-27T18:55:47+00:00">
+<meta property="article:modified_time" content="2016-08-29T04:09:17+00:00">
+<meta property="og:site_name" content="knowledge collisions">
+<meta property="og:image" content="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-56-11-pm.png">
+<meta property="og:image:width" content="1760">
+<meta property="og:image:height" content="548">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:text:title" content="Creating a MEAN Application With Authentication Using Angular 2">
+<meta name="twitter:card" content="summary">
+<meta property="fb:app_id" content="249643311490">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="https://s2.wp.com/i/webclip.png">
+<link rel="openid.server" href="https://knowledgecollisions.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="https://knowledgecollisions.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://knowledgecollisions.wordpress.com/osd.xml" title="knowledge collisions">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+				<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<meta name="application-name" content="knowledge collisions"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="Author posts, manage comments, and manage knowledge collisions."><meta name="msapplication-task" content="name=Edit post;action-uri=https://wordpress.com/post/knowledgecollisions.wordpress.com/262;icon-uri=https://s2.wp.com/i/icons/post.ico"><meta name="msapplication-task" content="name=Write a post;action-uri=https://wordpress.com/post/knowledgecollisions.wordpress.com;icon-uri=https://s2.wp.com/i/icons/post.ico"><meta name="msapplication-task" content="name=Moderate comments;action-uri=https://knowledgecollisions.wordpress.com/wp-admin/edit-comments.php?comment_status=moderated;icon-uri=https://s2.wp.com/i/icons/comment.ico"><meta name="msapplication-task" content="name=Upload new media;action-uri=https://knowledgecollisions.wordpress.com/wp-admin/media-new.php;icon-uri=https://s2.wp.com/i/icons/media.ico"><meta name="msapplication-task" content="name=Blog stats;action-uri=https://knowledgecollisions.wordpress.com/wp-admin/index.php?page=stats;icon-uri=https://s1.wp.com/i/icons/stats.ico"><meta name="description" content="Today we are going to create a web application that uses Angular 2 and NodeJS/ExpressJS, along with MongoDB. You can expect the final application to look like this: We have three types of domain objects in play: Users, Houses, and Bedrooms. Each of these objects have routes in our Node server and are persisted in MongoDB collections.…">
+<link rel="amphtml" href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/amp/"><style type="text/css" media="print">#wpadminbar { display:none; }</style>
+	<style type="text/css" media="screen">
+	html { margin-top: 32px !important; }
+	* html body { margin-top: 32px !important; }
+	@media screen and ( max-width: 782px ) {
+		html { margin-top: 46px !important; }
+		* html body { margin-top: 46px !important; }
+	}
+</style>
+	<style type="text/css" id="syntaxhighlighteranchor"></style>
+<link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./16_files/hovercard.min.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./16_files/services.min.css"></head>
+
+<body class="post-template-default single single-post postid-262 single-format-standard logged-in admin-bar no-customize-support custom-background mp6 customizer-styles-applied highlander-enabled highlander-dark" data-gr-c-s-loaded="true">
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/#content">Skip to content</a>
+
+	<header id="masthead" class="site-header" role="banner">
+		<div class="navigation-wrapper">
+						<nav id="site-navigation" class="main-navigation" role="navigation">
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" style="display: none;">Menu</button>
+							</nav><!-- #site-navigation -->
+		</div>
+
+		<div class="site-branding">
+									<h1 class="site-title"><a href="https://knowledgecollisions.wordpress.com/" rel="home">knowledge collisions</a></h1>
+			<h2 class="site-description"></h2>
+		</div><!-- .site-branding -->
+
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+				<article id="post-262" class="post-262 post type-post status-publish format-standard hentry category-uncategorized">
+
+		<header class="entry-header">
+			<div class="entry-meta">
+				<span class="byline"> Written by <span class="author vcard"><a class="url fn n" href="https://knowledgecollisions.wordpress.com/author/neelkri93/">neelkri93</a></span></span><span class="posted-on"><a href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/" rel="bookmark"><time class="entry-date published" datetime="2016-08-27T18:55:47+00:00">August 27, 2016</time><time class="updated" datetime="2016-08-29T04:09:17+00:00">August 29, 2016</time></a></span>			</div><!-- .entry-meta -->
+			<h1 class="entry-title">Creating a MEAN Application With Authentication Using Angular&nbsp;2</h1>		</header><!-- .entry-header -->
+
+		
+		<div class="entry-wrapper">
+
+			<div class="entry-content">
+				<p>Today we are going to create a web application that uses Angular 2 and NodeJS/ExpressJS, along with MongoDB. You can expect the final application to look like this:</p>
+<p><img data-attachment-id="267" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-28-at-10-29-58-am/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-29-58-am.png?w=756" data-orig-size="1766,1004" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-28 at 10.29.58 AM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-29-58-am.png?w=756?w=300" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-29-58-am.png?w=756?w=756" class="alignnone size-full wp-image-267" src="./16_files/screen-shot-2016-08-28-at-10-29-58-am.png" alt="Screen Shot 2016-08-28 at 10.29.58 AM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-29-58-am.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-29-58-am.png?w=1512 1512w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-29-58-am.png?w=150 150w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-29-58-am.png?w=300 300w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-29-58-am.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-29-58-am.png?w=1024 1024w" sizes="(max-width: 756px) 100vw, 756px"></p>
+<p><img data-attachment-id="268" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-28-at-10-32-26-am/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-32-26-am.png?w=756" data-orig-size="1760,1222" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-28 at 10.32.26 AM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-32-26-am.png?w=756?w=300" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-32-26-am.png?w=756?w=756" class="alignnone size-full wp-image-268" src="./16_files/screen-shot-2016-08-28-at-10-32-26-am.png" alt="Screen Shot 2016-08-28 at 10.32.26 AM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-32-26-am.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-32-26-am.png?w=1512 1512w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-32-26-am.png?w=150 150w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-32-26-am.png?w=300 300w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-32-26-am.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-32-26-am.png?w=1024 1024w" sizes="(max-width: 756px) 100vw, 756px"></p>
+<p><img data-attachment-id="269" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-28-at-10-33-36-am/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-33-36-am.png?w=756" data-orig-size="1666,1318" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-28 at 10.33.36 AM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-33-36-am.png?w=756?w=300" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-33-36-am.png?w=756?w=756" class="alignnone size-full wp-image-269" src="./16_files/screen-shot-2016-08-28-at-10-33-36-am.png" alt="Screen Shot 2016-08-28 at 10.33.36 AM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-33-36-am.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-33-36-am.png?w=1512 1512w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-33-36-am.png?w=150 150w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-33-36-am.png?w=300 300w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-33-36-am.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-33-36-am.png?w=1024 1024w" sizes="(max-width: 756px) 100vw, 756px"></p>
+<p>We have three&nbsp;types of domain objects in play: Users, Houses, and Bedrooms. Each of these objects have routes in our Node server and are&nbsp;persisted in MongoDB collections.</p>
+<p>Let’s start by cloning this seed project:&nbsp;https://github.com/neelkrishna/Angular2-MEAN-Seed-Project. Looking at the project structure, you’ll see that there is a skeleton Node application set to listen on port 3000 (see bin/www) and a single route set to load the view “index” (routes/app.js). You’ll also notice within the assets folder, two .ts files. If you have any familiarity with Angular 2, you’ll know that this is a seed project for an Angular 2 app. For those unfamiliar with the .ts extension, it signifies a TypeScript file. TypeScript is a superscript of EcmaScript 6 (ES6). JavaScript is also known as ES5. For our purposes, TypeScript is a more powerful form of JavaScript that allows us to use constructors, instances of classes, and more comprehensive methods. The TypeScript tutorial I used was the one on angular.io, but you can probably follow along here without needing to visit a separate tutorial.</p>
+<p>One other thing you’ll need to do before we start is installing mongoDB on your system. There are several resources online explaining how to do this, so I will not go into it. Once you have installed mongoDB create a database called node-angular. You can leave the mongod command running in the background while we turn our focus to the Node application. Make sure “mongoose” is required in app.js and set to connect to your database (usually on port 27017).</p>
+<p>Let’s start by configuring our project to run on the browser. in your command line, navigate to the folder you have cloned the project into, and run the following commands in order:</p>
+<ol>
+<li>npm run typings install</li>
+<li>npm install gulp</li>
+<li>npm run gulp</li>
+<li>Then, in a new command tab navigate to the same folder and run: npm start</li>
+</ol>
+<p>Navigate to localhost:3000 in your browser and see the welcome message found in views/index.hbs. Note that the view is being called by routes/app.js, and that the angular app is not in the picture at all yet. For now, we’re going to&nbsp;keep it that way.</p>
+<p>Let’s start by building the NodeJS server. The first thing we are going to do is&nbsp;create the House and Bedroom domain objects. Create a folder called models within the root project folder. Here is what your files&nbsp;should look like:</p>
+<p>models/house.js:</p>
+<pre><code>var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var bedroom = require('./bedroom');
+var schema = new Schema({
+address: {type: String, required: true},
+sqFt: {type: String, required: true},
+bedroomIds:[{ type: String, ref:'bedroom' }]
+});
+schema.plugin(mongooseUniqueValidator);
+module.exports = mongoose.model('House', schema);</code></pre>
+<p>models/bedroom.js:</p>
+<pre><code>
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var house = require('./house');
+var schema = new Schema({
+bedSize: {type: String, required: true},
+sqFt: {type: String, required: true},
+houseId: { type:String}
+});
+module.exports = mongoose.model('Bedroom', schema);
+</code></pre>
+<p>&nbsp;</p>
+<p>Now that we have created these domain objects, Mongoose will know to persist them to collections in our node-angular database called house and bedroom. &nbsp;The next thing we want to do is add routes for them – specifically to field HTTP requests from the browser.</p>
+<p>routes/houses.js:</p>
+<pre><code>
+var express = require('express');
+var router = express.Router();
+var House = require('../models/house');
+router.get('/', function(req, res, next){
+    House.find()
+        .exec(function(err, docs){
+            if(err){
+                return res.status(404).json({
+                    title: 'An error occurred',
+                    error: err
+                });
+            }
+            res.status(200).json({
+                message: 'Success',
+                obj: docs
+            });
+        });
+});
+router.get('/:id', function(req, res, next){
+    House.findById(req.params.id)
+        .exec(function(err, doc){
+            if(err){
+                return res.status(404).json({
+                    title: 'An error occurred',
+                    error: err
+                });
+            }
+            res.status(200).json({
+                message: 'Success',
+                obj: doc
+            });
+        });
+});
+router.post('/', function(req, res, next){
+    var house = new House({
+        address: req.body.address,
+        sqFt: req.body.sqFt,
+        bedroomIds: req.body.bedroomIds
+    });
+    house.save(function(err, result){
+        if(err){
+            return res.status(404).json({
+                title: 'Error',
+                error: err
+            });
+        }
+        res.status(201).json({
+            message: 'saved house',
+            obj: result
+        });
+    });
+});
+router.patch('/:id', function(req, res, next){
+    House.findById(req.params.id, function(err, doc){
+        if(err){
+            return res.status(404).json({
+                title: 'Error',
+                error: err
+            });
+        }
+        if(!doc){
+            return res.status(404).json({
+                title: 'No house found',
+                error: {message: 'House could not be found'}
+            });
+        }
+        doc.address = req.body.address;
+        doc.sqFt = req.body.sqFt;
+        doc.bedroomIds = req.body.bedrooms
+        doc.save(function(err, result){
+            if(err){
+                return res.status(404).json({
+                    title: 'Error',
+                    error: err
+                });
+            }
+            res.status(200).json({
+                message: 'Success',
+                obj: result
+            });
+        });
+    })
+});
+router.delete('/:id', function (req, res, next) {
+    House.findById(req.params.id, function (err, doc) {
+        if (err) {
+            return res.status(404).json({
+                title: 'An error occurred',
+                error: err
+            });
+        }
+        if (!doc) {
+            return res.status(404).json({
+                title: 'No houses found',
+                error: {message: 'House could not be found'}
+            });
+        }
+        doc.remove(function (err, result) {
+            if (err) {
+                return res.status(404).json({
+                    title: 'An error occurred',
+                    error: err
+                });
+            }
+            res.status(200).json({
+                message: 'Success',
+                obj: result
+            });
+        });
+    });
+});
+module.exports = router;
+</code></pre>
+<p>routes/bedrooms.js:</p>
+<pre><code>
+var express = require('express');
+var router = express.Router();
+var Bedroom = require('../models/bedroom');
+router.get('/', function(req, res, next){
+    Bedroom.find()
+        .exec(function(err, docs){
+            if(err){
+                return res.status(404).json({
+                    title: 'An error occurred',
+                    error: err
+                });
+            }
+            res.status(200).json({
+                message: 'Success',
+                obj: docs
+            });
+        });
+});
+router.get('/:id', function(req, res, next){
+    Bedroom.findById(req.params.id)
+        .exec(function(err, doc){
+            if(err){
+                return res.status(404).json({
+                    title: 'An error occurred',
+                    error: err
+                });
+            }
+            res.status(200).json({
+                message: 'Success',
+                obj: doc
+            });
+        });
+});
+router.post('/', function(req, res, next){
+    var bedroom = new Bedroom({
+        bedSize: req.body.bedSize,
+        sqFt: req.body.sqFt,
+        houseId: req.body.houseId
+    });
+    console.log(JSON.stringify(bedroom));
+    bedroom.save(function(err, result){
+        if(err){
+            return res.status(404).json({
+                title: 'Error',
+                error: err
+            });
+        }
+        res.status(201).json({
+            message: 'saved bedroom',
+            obj: result
+        });
+    });
+});
+router.patch('/:id', function(req, res, next){
+    Bedroom.findById(req.params.id, function(err, doc){
+        if(err){
+            return res.status(404).json({
+                title: 'Error',
+                error: err
+            });
+        }
+        if(!doc){
+            return res.status(404).json({
+                title: 'No bedroom found',
+                error: {message: 'Bedroom could not be found'}
+            });
+        }
+        doc.bedSize = req.body.bedSize;
+        doc.sqFt = req.body.sqFt;
+        doc.house = req.body.house;
+        doc.save(function(err, result){
+            if(err){
+                return res.status(404).json({
+                    title: 'Error',
+                    error: err
+                });
+            }
+            res.status(200).json({
+                message: 'Success',
+                obj: result
+            });
+        });
+    })
+});
+router.delete('/:id', function (req, res, next) {
+    Bedroom.findById(req.params.id, function (err, doc) {
+        if (err) {
+            return res.status(404).json({
+                title: 'An error occurred',
+                error: err
+            });
+        }
+        if (!doc) {
+            return res.status(404).json({
+                title: 'No bedroom found',
+                error: {message: 'Bedroom could not be found'}
+            });
+        }
+        doc.remove(function (err, result) {
+            if (err) {
+                return res.status(404).json({
+                    title: 'An error occurred',
+                    error: err
+                });
+            }
+            res.status(200).json({
+                message: 'Success',
+                obj: result
+            });
+        });
+    });
+});
+module.exports = router;
+</code></pre>
+<p>The code for both of these files is similar so I posted them together. Notice the format for each request. If you are unfamiliar with it, as I was, the important thing to note is that each request takes in two parameters: a route, sometimes with additional parameters like ID, and a function. The function takes in req, res, and next. For our purposes, let’s focus on the req(uest) and the res(ponse). The request is passed as JSON from the browser and is acted on in these methods. Once the correct action is taken by the server, a JSON response is sent back to the browser conaining whatever is designated using the return keyword.</p>
+<p>At this point, we should have what we need to handle HTTP requests from the browser, meaning we can shelf the server for now (until we are ready to add authentication) and start building the Angular 2 front-end project. Since we are writing a smaller application than most, I have integrated the client-side application and the server into one project. Larger endeavors will usually separate them into two; however, here you can find the starter files for the Angular app in the assets folder. We will build out the entirety of the client=side application in that folder.</p>
+<p>Let’s start by creating a simple house object. Within the assets/app folder, create a new folder called houses, and within that a new file called house.ts:</p>
+<pre><code>
+export class House {
+    address: string;
+    sqFt: string;
+    bedroomIds: string[];
+    houseId: string;
+
+    constructor (address: string, sqFt: string, bedroomIds?: string[], houseId?: string) {
+        this.address = address;
+        this.sqFt = sqFt;
+        this.bedroomIds = bedroomIds;
+        this.houseId = houseId;
+    }
+}
+</code></pre>
+<p>And, let’s also create a folder called bedrooms on the same level as houses, and add bedroom.ts:</p>
+<pre><code>
+export class Bedroom {
+    bedSize: string;
+    sqFt: string;
+    houseId: string;
+    bedroomId: string;
+
+    constructor (bedSize: string, sqFt: string, houseId: string, bedroomId: string) {
+        this.bedSize = bedSize;
+        this.sqFt = sqFt;
+        this.houseId = houseId;
+        this.bedroomId = bedroomId;
+    }
+}
+</code></pre>
+<p>We have just created two angular 2 domain objects, and now we must define components for them. To try to picture what we are attempting with this step, look back at the screenshots of the finished app at the top of the tutorial. We are about to create the html and TypeScript methods for each of the House and Bedroom objects shown in a list in the second and third screenshots. Here is the code for houses/house.component.ts:</p>
+<pre><code>
+import { Component, Input, Output, EventEmitter } from "@angular/core";
+
+import { House } from "./house";
+import { HouseService } from "./house.service";
+<img data-attachment-id="289" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-28-at-10-16-08-pm/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-16-08-pm.png?w=756" data-orig-size="1000,1012" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-28 at 10.16.08 PM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-16-08-pm.png?w=756?w=296" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-16-08-pm.png?w=756?w=756" class="alignnone size-full wp-image-289" src="./16_files/screen-shot-2016-08-28-at-10-16-08-pm.png" alt="Screen Shot 2016-08-28 at 10.16.08 PM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-16-08-pm.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-16-08-pm.png?w=148 148w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-16-08-pm.png?w=296 296w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-16-08-pm.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-16-08-pm.png 1000w" sizes="(max-width: 756px) 100vw, 756px">
+</code></pre>
+<pre><code>
+export class HouseComponent {
+    @Input() house:House;
+    @Output() editClicked = new EventEmitter();
+
+    constructor (private _houseService: HouseService, private _errorService: ErrorService) {}
+
+    onEdit() {
+        this._houseService.editHouse(this.house);
+    }
+
+    onDelete() {
+        this._houseService.deleteHouse(this.house)
+            .subscribe(
+                data =&gt; console.log(data),
+                error =&gt; this._errorService.handleError(error)
+            );
+    }
+}
+</code></pre>
+<p>Here is the corresponding code for bedrooms/bedroom.component.ts:</p>
+<pre><code>
+import { Component, Input, Output, EventEmitter } from "@angular/core";
+
+import { Bedroom } from "./bedroom";
+import { BedroomService } from "./bedroom.service";
+import { HouseService } from "../houses/house.service";
+import { ErrorService } from "../errors/error.service";
+</code></pre>
+<p><img data-attachment-id="290" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-28-at-10-17-16-pm/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-17-16-pm.png?w=756" data-orig-size="1564,998" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-28 at 10.17.16 PM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-17-16-pm.png?w=756?w=300" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-17-16-pm.png?w=756?w=756" class="alignnone size-full wp-image-290" src="./16_files/screen-shot-2016-08-28-at-10-17-16-pm.png" alt="Screen Shot 2016-08-28 at 10.17.16 PM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-17-16-pm.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-17-16-pm.png?w=1512 1512w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-17-16-pm.png?w=150 150w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-17-16-pm.png?w=300 300w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-17-16-pm.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-17-16-pm.png?w=1024 1024w" sizes="(max-width: 756px) 100vw, 756px"></p>
+<pre><code>
+export class BedroomComponent {
+    @Input() bedroom:Bedroom;
+    @Output() editClicked = new EventEmitter();
+    houseAddress : string;
+
+    constructor (private _bedroomService: BedroomService, private _houseService: HouseService, private _errorService: ErrorService) {}
+
+    ngOnInit(){
+        if(this.bedroom.houseId){
+            this._houseService.getHouseAddress(this.bedroom.houseId)
+                .subscribe(
+                    data =&gt; this.houseAddress = data,
+                    error =&gt; this._errorService.handleError(error)
+                );
+        }
+
+    }
+
+    onEdit() {
+        this._bedroomService.editBedroom(this.bedroom);
+    }
+
+    onDelete() {
+        this._bedroomService.deleteBedroom(this.bedroom)
+            .subscribe(
+                data =&gt; console.log(data),
+                error =&gt; this._errorService.handleError(error)
+            );
+    }
+}
+</code></pre>
+<p>You should notice that these two classes call two service classes that we have not created yet: HouseService and BedroomService. Without them, the application will naturally crash. Before we begin working on those methods, though, we first need to draw our attention to Angular 2’s newest, proudest feature: Observables. Observables have replaced promises from angularjs. They are special TypeScript objects that notify “subscribers” of changes to the object. For instance, our array of houses can be changed through adding, editing, or deleting entries. Since the array of houses returned through the service (which we are about to create) is an Observable, we can <i>subscribe</i> to it in the component as you see in the onDelete method of each component. So, with that in mind, let’s build our service classes. Here is houses/house.service.ts:</p>
+<pre><code>
+import { House } from "./house";
+import {Http, Headers} from "@angular/http";
+import {Injectable, EventEmitter} from "@angular/core";
+import 'rxjs/Rx';
+import {Observable} from "rxjs/Observable";
+
+@Injectable()
+export class HouseService {
+    houses:House[] = [];
+    editClicked = new EventEmitter();
+
+    constructor(private _http:Http) {
+    }
+
+    addHouse(house: House){
+        const body = JSON.stringify(house);
+        const headers = new Headers({'Content-Type': 'application/json'});
+        return this._http.post('http://localhost:3000/house', body, {headers: headers})
+            .map(response =&gt; {
+                const data = response.json().obj;
+                let house = new House(data.address, data.sqFt, data.bedrooms ? data.bedrooms : null, null);
+                return house;
+            })
+            .catch(error =&gt; Observable.throw(error.json()));
+    }
+
+    getHouses(){
+        return this._http.get('http://localhost:3000/house')
+            .map(response =&gt; {
+                const data = response.json().obj;
+                let objs: any [] = [];
+                for(let i = 0; i &lt; data.length; i++){                     let house = new House(data[i].address, data[i].sqFt, data[i].bedrooms ? data[i].bedrooms : null, data[i]._id);                     objs.push(house);                 };                 return objs;             })             .catch(error =&gt; Observable.throw(error.json()));
+    }
+
+    getHouseAddress(houseId){
+        return this._http.get('http://localhost:3000/house/' + houseId)
+            .map(response =&gt; {
+                const data = response.json().obj;
+                return data.address;
+            })
+            .catch(error =&gt; Observable.throw(error.json()));
+    }
+
+    updateHouse(house: House){
+        const body = JSON.stringify(house);
+        const headers = new Headers({'Content-Type': 'application/json'});
+        return this._http.patch('http://localhost:3000/house/' + house.houseId, body, {headers: headers})
+            .map(response =&gt; response.json())
+            .catch(error =&gt; Observable.throw(error.json()));
+    }
+
+    editHouse(house: House){
+        this.editClicked.emit(house);
+    }
+
+    deleteHouse(house: House){
+        this.houses.splice(this.houses.indexOf(house), 1);
+        return this._http.delete('http://localhost:3000/house/' + house.houseId)
+            .map(response =&gt; response.json())
+            .catch(error =&gt; Observable.throw(error.json()));
+    }
+}
+</code></pre>
+<p>and here is bedrooms/bedroom.service.ts:</p>
+<pre><code>
+import { Bedroom } from "./bedroom";
+import {Http, Headers} from "@angular/http";
+import {Injectable, EventEmitter} from "@angular/core";
+import 'rxjs/Rx';
+import {Observable} from "rxjs/Observable";
+
+@Injectable()
+export class BedroomService {
+    bedrooms:Bedroom[] = [];
+    editClicked = new EventEmitter();
+
+    constructor(private _http:Http) {
+    }
+
+    addBedroom(bedroom: Bedroom){
+        const body = JSON.stringify(bedroom);
+        const headers = new Headers({'Content-Type': 'application/json'});
+        return this._http.post('http://localhost:3000/bedroom', body, {headers: headers})
+            .map(response =&gt; {
+                const data = response.json().obj;
+                let bedroom = new Bedroom(data.bedSize, data.sqFt, data.houseId, null);
+                return bedroom;
+            })
+            .catch(error =&gt; Observable.throw(error.json()));
+    }
+
+    getBedrooms(){
+        return this._http.get('http://localhost:3000/bedroom')
+            .map(response =&gt; {
+                const data = response.json().obj;
+                let objs: any [] = [];
+                for(let i = 0; i &lt; data.length; i++){                     let bedroom = new Bedroom(data[i].bedSize, data[i].sqFt, data[i].houseId, data[i]._id);                     objs.push(bedroom);                 };                 return objs;             })             .catch(error =&gt; Observable.throw(error.json()));
+    }
+
+    updateBedroom(bedroom: Bedroom){
+        const body = JSON.stringify(bedroom);
+        const headers = new Headers({'Content-Type': 'application/json'});
+        return this._http.patch('http://localhost:3000/bedroom/' + bedroom.bedroomId, body, {headers: headers})
+            .map(response =&gt; response.json())
+            .catch(error =&gt; Observable.throw(error.json()));
+    }
+
+    editBedroom(bedroom: Bedroom){
+        this.editClicked.emit(bedroom);
+    }
+
+    deleteBedroom(bedroom: Bedroom){
+        this.bedrooms.splice(this.bedrooms.indexOf(bedroom), 1);
+        return this._http.delete('http://localhost:3000/bedroom/' + bedroom.bedroomId)
+            .map(response =&gt; response.json())
+            .catch(error =&gt; Observable.throw(error.json()));
+    }
+}
+</code></pre>
+<p>Notice in each method, the HTTP request is appended with a “.map()” call, which sets the response passed back from the server (recall that this is sent back in JSON format and usually contains the object passed in the request with either an error or success message). Other notes about these service methods:</p>
+<ol>
+<li>in both the add methods, notice that the response is received and the object it returns is added to the array of houses or bedrooms initialized at the top of the service.</li>
+<li>in the delete methods, the splice method is just making sure that the deleted item is removed from the view without a refresh. The next line, with the HTTP request, makes sure it is wiped from the database as well.</li>
+<li>the edit methods are simply populating the textboxes at the top with the proper information once edit within the component is clicked. The update methods are what are evoked when the edit button is pressed under the textboxes. To picture this, see the screenshots at the start of this piece.</li>
+<li>Observables have to be imported from the Rxjs library.</li>
+</ol>
+<p>Now that we have created a house component and bedroom component, we have to add a way for users to create house and bedroom entries. Here is the code for houses/house-input.component.ts:</p>
+<pre><code>
+import { Component, OnInit } from "@angular/core";
+
+import { House } from "./house";
+import { Bedroom } from "../bedrooms/bedroom";
+import { BedroomService } from "../bedrooms/bedroom.service";
+import { HouseService } from "./house.service";
+import 'rxjs/Rx';
+import {Observable} from "rxjs/Observable";
+</code></pre>
+<pre><code><img data-attachment-id="292" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-28-at-10-21-10-pm/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-21-10-pm.png?w=756" data-orig-size="1864,592" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-28 at 10.21.10 PM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-21-10-pm.png?w=756?w=300" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-21-10-pm.png?w=756?w=756" class="alignnone size-full wp-image-292" src="./16_files/screen-shot-2016-08-28-at-10-21-10-pm.png" alt="Screen Shot 2016-08-28 at 10.21.10 PM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-21-10-pm.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-21-10-pm.png?w=1512 1512w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-21-10-pm.png?w=150 150w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-21-10-pm.png?w=300 300w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-21-10-pm.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-21-10-pm.png?w=1024 1024w" sizes="(max-width: 756px) 100vw, 756px">
+export class HouseInputComponent implements OnInit{
+    house:House = null;
+    bedroomList:Bedroom[] = null;
+    constructor(private _houseService:HouseService, private _bedroomService:BedroomService) {
+    }
+
+    onSubmit(form:any) {
+
+        if(this.house){
+            this.house.address = form.address;
+            this.house.sqFt = form.sqFt;
+            this.house.bedroomIds = form.bedrooms;
+            this._houseService.updateHouse(this.house)
+                .subscribe(
+                    data =&gt; console.log(data),
+                    error =&gt; console.log(error)
+                );
+            this.house = null;
+        }else{
+            const house:House = new House(form.address, form.sqFt, form.bedrooms, null);
+            this._houseService.addHouse(house)
+                .subscribe(
+                    data =&gt; {
+                        console.log(data);
+                        this._houseService.houses.push(data);
+                    },
+                    error =&gt; console.log(error)
+                );
+        }
+
+    }
+
+    onCancel(){
+        this.house = null;
+    }
+
+    ngOnInit(){
+        this._houseService.editClicked.subscribe(
+            house =&gt; {
+                this.house = house;
+            }
+        );
+    }
+}
+</code></pre>
+<p>The code for bedrooms/bedroom-input.component.ts:</p>
+<pre><code>
+import { Component, OnInit } from "@angular/core";
+
+import { Bedroom } from "./bedroom";
+import { House } from "../houses/house";
+import { BedroomService } from "./bedroom.service";
+import { HouseService } from "../houses/house.service";
+</code></pre>
+<pre><code><img data-attachment-id="293" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-28-at-10-23-48-pm/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-23-48-pm.png?w=756" data-orig-size="1874,766" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-28 at 10.23.48 PM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-23-48-pm.png?w=756?w=300" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-23-48-pm.png?w=756?w=756" class="alignnone size-full wp-image-293" src="./16_files/screen-shot-2016-08-28-at-10-23-48-pm.png" alt="Screen Shot 2016-08-28 at 10.23.48 PM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-23-48-pm.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-23-48-pm.png?w=1512 1512w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-23-48-pm.png?w=150 150w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-23-48-pm.png?w=300 300w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-23-48-pm.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-23-48-pm.png?w=1024 1024w" sizes="(max-width: 756px) 100vw, 756px">
+export class BedroomInputComponent implements OnInit{
+    bedroom:Bedroom = null;
+    houseList:House[] = null;
+    constructor(private _bedroomService:BedroomService, private _houseService:HouseService) {
+    }
+
+    onSubmit(form:any) {
+        if(this.bedroom){
+            this.bedroom.bedSize = form.bedSize;
+            this.bedroom.sqFt = form.sqFt;
+            this.bedroom.houseId = form.houseId;
+            this._bedroomService.updateBedroom(this.bedroom)
+                .subscribe(
+                    data =&gt; console.log(data),
+                    error =&gt; console.log(error)
+                );
+            this.bedroom = null;
+        }else{
+            const bedroom:Bedroom = new Bedroom(form.bedSize, form.sqFt, form.houseId, null);
+            this._bedroomService.addBedroom(bedroom)
+                .subscribe(
+                    data =&gt; {
+                        console.log(data);
+                        this._bedroomService.bedrooms.push(data);
+                    },
+                    error =&gt; console.log(error)
+                );
+        }
+
+    }
+
+    onCancel(){
+        this.bedroom = null;
+    }
+
+    ngOnInit(){
+        this._bedroomService.editClicked.subscribe(
+            bedroom =&gt; {
+                this.bedroom = bedroom;
+            }
+        );
+
+
+        this._houseService.getHouses()
+            .subscribe(
+                houses =&gt; {
+                    this.houseList = houses;
+                    this._houseService.houses.push(houses);
+                }
+            );
+
+    }
+}
+</code></pre>
+<p>So now, we have successfully created input fields with a button which calls the appropriate service method, as discussed in the four points below the service classes above. The last individual components we need to create for each of our domain objects are list components, and then one component to contain each of the others we have created. Let’s start with houses/house-list.component.ts:</p>
+<p><img data-attachment-id="294" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-28-at-10-40-57-pm/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-40-57-pm.png?w=756" data-orig-size="1712,970" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-28 at 10.40.57 PM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-40-57-pm.png?w=756?w=300" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-40-57-pm.png?w=756?w=756" class="alignnone size-full wp-image-294" src="./16_files/screen-shot-2016-08-28-at-10-40-57-pm.png" alt="Screen Shot 2016-08-28 at 10.40.57 PM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-40-57-pm.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-40-57-pm.png?w=1512 1512w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-40-57-pm.png?w=150 150w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-40-57-pm.png?w=300 300w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-40-57-pm.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-40-57-pm.png?w=1024 1024w" sizes="(max-width: 756px) 100vw, 756px"></p>
+<p>And bedrooms-list.component.ts:</p>
+<p><img data-attachment-id="295" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-28-at-10-41-48-pm/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-41-48-pm.png?w=756" data-orig-size="1966,940" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-28 at 10.41.48 PM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-41-48-pm.png?w=756?w=300" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-41-48-pm.png?w=756?w=756" class="alignnone size-full wp-image-295" src="./16_files/screen-shot-2016-08-28-at-10-41-48-pm.png" alt="Screen Shot 2016-08-28 at 10.41.48 PM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-41-48-pm.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-41-48-pm.png?w=1510 1510w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-41-48-pm.png?w=150 150w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-41-48-pm.png?w=300 300w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-41-48-pm.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-41-48-pm.png?w=1024 1024w" sizes="(max-width: 756px) 100vw, 756px"></p>
+<p>The notables for these files include the ngFor in the HTML template, which is used to iterate through and list each of the objects&nbsp;(notice the my-bedroom selector in bedrooms-list.component.ts, which belongs to bedroom.component.ts), as well as the subscribe method adding each bedroom or house to the premade array as it is received by the Observable object.</p>
+<p>Finally, we have houses.component.ts and bedrooms.component.ts. These files put together the components we have created so far using selectors for those components:</p>
+<p><img data-attachment-id="296" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-28-at-10-46-59-pm/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-46-59-pm.png?w=756" data-orig-size="986,634" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-28 at 10.46.59 PM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-46-59-pm.png?w=756?w=300" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-46-59-pm.png?w=756?w=756" class="alignnone size-full wp-image-296" src="./16_files/screen-shot-2016-08-28-at-10-46-59-pm.png" alt="Screen Shot 2016-08-28 at 10.46.59 PM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-46-59-pm.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-46-59-pm.png?w=150 150w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-46-59-pm.png?w=300 300w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-46-59-pm.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-46-59-pm.png 986w" sizes="(max-width: 756px) 100vw, 756px"></p>
+<p><img data-attachment-id="297" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-28-at-10-47-12-pm/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-47-12-pm.png?w=756" data-orig-size="1008,640" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-28 at 10.47.12 PM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-47-12-pm.png?w=756?w=300" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-47-12-pm.png?w=756?w=756" class="alignnone size-full wp-image-297" src="./16_files/screen-shot-2016-08-28-at-10-47-12-pm.png" alt="Screen Shot 2016-08-28 at 10.47.12 PM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-47-12-pm.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-47-12-pm.png?w=150 150w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-47-12-pm.png?w=300 300w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-47-12-pm.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-47-12-pm.png 1008w" sizes="(max-width: 756px) 100vw, 756px"></p>
+<p>Not much else to say about those files.&nbsp;The next task is to add a navigation bar from which we can switch between the houses page and bedrooms page. To do that we have to configure routes for those two pages. We will do this in the existing app.component.ts file, so that it looks like this:</p>
+<p>&nbsp;</p>
+<pre><code>
+import { Component } from '@angular/core';
+import { Routes, ROUTER_DIRECTIVES, Router } from "@angular/router";
+import { HeaderComponent } from "./header.component";
+import { HousesComponent } from "./houses/houses.component";
+import { BedroomsComponent } from "./bedrooms/bedrooms.component";
+</code></pre>
+<p><img data-attachment-id="298" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-28-at-10-51-26-pm/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-51-26-pm.png?w=756" data-orig-size="1008,350" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-28 at 10.51.26 PM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-51-26-pm.png?w=756?w=300" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-51-26-pm.png?w=756?w=756" class="alignnone size-full wp-image-298" src="./16_files/screen-shot-2016-08-28-at-10-51-26-pm.png" alt="Screen Shot 2016-08-28 at 10.51.26 PM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-51-26-pm.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-51-26-pm.png?w=150 150w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-51-26-pm.png?w=300 300w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-51-26-pm.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-51-26-pm.png 1008w" sizes="(max-width: 756px) 100vw, 756px"></p>
+<pre><code>
+@Routes([
+    {path: '/', component: HousesComponent},
+    {path: '/bedrooms', component: BedroomsComponent},
+])
+export class AppComponent {
+    
+}
+</code></pre>
+<p>The important thing about this file is the routes section, where we have made the root route match our HousesComponent and added another route for our BedroomsComponent. Notice we are trying to import a HeaderComponent, which is something we haven’t created yet. Let’s do that now. Here is the code for header.component.ts:</p>
+<p>&nbsp;</p>
+<p><img data-attachment-id="302" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-28-at-10-57-59-pm/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-57-59-pm.png?w=756" data-orig-size="1110,1274" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-28 at 10.57.59 PM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-57-59-pm.png?w=756?w=261" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-57-59-pm.png?w=756?w=756" class="alignnone size-full wp-image-302" src="./16_files/screen-shot-2016-08-28-at-10-57-59-pm.png" alt="Screen Shot 2016-08-28 at 10.57.59 PM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-57-59-pm.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-57-59-pm.png?w=131 131w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-57-59-pm.png?w=261 261w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-57-59-pm.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-57-59-pm.png?w=892 892w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-10-57-59-pm.png 1110w" sizes="(max-width: 756px) 100vw, 756px"></p>
+<p>Make sure your boot.ts file imports and bootstraps all the&nbsp;services&nbsp;we have created so far. At this point you should be able to fire up the application (ctrl + c and npm start in the terminal, also do the same for the npm run gulp command) and see it working with all four crud operations for houses and bedrooms. The UI should be clean. If you are not experiencing seamless navigation and persistance, check your browser console (right-click –&gt; inspect –&gt; console in Chrome) and Google the error, or post it in the comments below!</p>
+<p>There are two major things left to finish this application: Authentication, and Error Handling. Starting with authentication, let’s go back to the NodeJS server and in models, add a new file called user.js:</p>
+<pre><code>
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var mongooseUniqueValidator = require('mongoose-unique-validator');
+
+var schema = new Schema({
+    firstName: {type: String, required: true},
+    lastName: {type: String, required: true},
+    password: {type: String, required: true},
+    email: {type: String, required: true, unique: true},
+    houses: [{type: Schema.Types.ObjectId, ref: 'house'}],
+    bedrooms: [{type: Schema.Types.ObjectId, ref: 'bedroom'}]
+
+});
+
+schema.plugin(mongooseUniqueValidator);
+
+module.exports = mongoose.model('User', schema);
+</code></pre>
+<p>Next let’s add routes for this file in routes/users.js:</p>
+<pre><code>
+var express = require('express');
+var router = express.Router();
+var passwordHash = require('password-hash');
+var jwt = require('jsonwebtoken');
+
+var User = require('../models/user');
+
+router.post('/', function(req, res, next) {
+    var user = new User({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        password: passwordHash.generate(req.body.password),
+        email: req.body.email
+    });
+    user.save(function(err, result) {
+        if (err) {
+            return res.status(404).json({
+                title: 'An error occurred',
+                error: err
+            });
+        }
+        res.status(200).json({
+            message: 'Success',
+            obj: result
+        });
+    });
+});
+
+router.post('/signin', function(req, res, next) {
+    User.findOne({email: req.body.email}, function(err, doc) {
+        if (err) {
+            return res.status(404).json({
+                title: 'An error occurred',
+                error: err
+            });
+        }
+        if (!doc) {
+            return res.status(404).json({
+                title: 'No user found',
+                error: {message: 'User could not be found'}
+            });
+        }
+        if (!passwordHash.verify(req.body.password, doc.password)) {
+            return res.status(404).json({
+                title: 'Could not sign you in',
+                error: {message: 'Invalid password'}
+            });
+        }
+        var token = jwt.sign({user: doc}, 'secret', {expiresIn: 7200});
+        res.status(200).json({
+            message: 'Success',
+            token: token,
+            userId: doc._id
+        });
+    })
+});
+
+module.exports = router;
+</code></pre>
+<p>Notice here we required two external plugins, password-hash and json-web-token. Make sure to run an npm install for each of these. PasswordHash is used to obfuscate the password for each user account in the database, and json web tokens are used to authenticate users. On signin, if a user is approved, a token is returned to the browser. We can then check for the token on the client side to determine whether a user is authenticated.</p>
+<p>Now that we have configured users in the node side, after requiring the routes in app.js, we can turn our attention to the angular side. Within the assets/app folder, create a new folder called auth and a TypeScript file called user.ts:</p>
+<pre><code>
+export class User {
+    constructor(public email: string, public password: string, public firstName?: string, public lastName?: string) {}
+}
+</code></pre>
+<p>Here is the code for auth/auth.service.ts, which contains methods for signing up, logging in, and logging out, as well as a very important method that checks whether a user is currently logged in:</p>
+<pre><code>
+import { Injectable } from "@angular/core";
+import { Http, Headers } from "@angular/http";
+import { Observable } from "rxjs/Observable";
+import 'rxjs/Rx';
+
+import { User } from "./user";
+
+@Injectable()
+export class AuthService {
+    constructor (private _http: Http) {}
+
+    signup(user: User) {
+        const body = JSON.stringify(user);
+        const headers = new Headers({'Content-Type': 'application/json'});
+        return this._http.post('http://localhost:3000/user', body, {headers: headers})
+            .map(response =&gt; response.json())
+            .catch(error =&gt; Observable.throw(error.json()));
+    }
+
+    signin(user: User) {
+        const body = JSON.stringify(user);
+        const headers = new Headers({'Content-Type': 'application/json'});
+        return this._http.post('http://localhost:3000/user/signin', body, {headers: headers})
+            .map(response =&gt; response.json())
+            .catch(error =&gt; Observable.throw(error.json()));
+    }
+
+    logout() {
+        localStorage.clear();
+    }
+
+    isLoggedIn() {
+        return localStorage.getItem('token') !== null;
+    }
+}
+</code></pre>
+<p>Next we will add a Sign Up form. Below is the code for auth/signup.component.ts:</p>
+<pre><code>
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, ControlGroup, Validators, Control } from "@angular/common";
+
+import { User } from "./user";
+import { AuthService } from "./auth.service";
+</code></pre>
+<p><img data-attachment-id="306" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-28-at-11-34-31-pm-2/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-34-31-pm1.png?w=756" data-orig-size="1734,786" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-28 at 11.34.31 PM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-34-31-pm1.png?w=756?w=300" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-34-31-pm1.png?w=756?w=756" class="alignnone size-full wp-image-306" src="./16_files/screen-shot-2016-08-28-at-11-34-31-pm1.png" alt="Screen Shot 2016-08-28 at 11.34.31 PM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-34-31-pm1.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-34-31-pm1.png?w=1512 1512w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-34-31-pm1.png?w=150 150w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-34-31-pm1.png?w=300 300w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-34-31-pm1.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-34-31-pm1.png?w=1024 1024w" sizes="(max-width: 756px) 100vw, 756px"></p>
+<pre><code>
+export class SignupComponent implements OnInit {
+    myForm: ControlGroup;
+
+    constructor(private _fb:FormBuilder, private _authService: AuthService) {}
+
+    onSubmit() {
+        const user = new User(this.myForm.value.email, this.myForm.value.password, this.myForm.value.firstName, this.myForm.value.lastName);
+        console.log(user);
+        this._authService.signup(user)
+            .subscribe(
+                data =&gt; console.log(data),
+                error =&gt; console.log(error)
+            )
+    }
+
+    ngOnInit() {
+        this.myForm = this._fb.group({
+            firstName: ['', Validators.required],
+            lastName: ['', Validators.required],
+            email: ['', Validators.compose([
+                Validators.required,
+                this.isEmail
+            ])],
+            password: ['', Validators.required]
+        });
+    }
+
+    private isEmail(control: Control): {[s: string]: boolean} {
+        if (!control.value.match("[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")) {
+            return {invalidMail: true};
+        }
+    }
+}
+</code></pre>
+<p>Some things worth noting: In the “isEmail()” method that complicated expression is a regex that ensures the text entered in the email textbox is in fact an email. In the init method, the validators used are imported npm packages, not part of angular 2. Here is the code for the very similar auth/signin.component.ts:</p>
+<pre><code>
+import { Component, OnInit } from "@angular/core";
+import { ControlGroup, FormBuilder, Validators, Control } from "@angular/common";
+import { Router } from "@angular/router";
+
+import { User } from "./user";
+import { AuthService } from "./auth.service";
+</code></pre>
+<p><img data-attachment-id="307" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-28-at-11-56-11-pm/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-56-11-pm.png?w=756" data-orig-size="1760,548" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-28 at 11.56.11 PM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-56-11-pm.png?w=756?w=300" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-56-11-pm.png?w=756?w=756" class="alignnone size-full wp-image-307" src="./16_files/screen-shot-2016-08-28-at-11-56-11-pm.png" alt="Screen Shot 2016-08-28 at 11.56.11 PM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-56-11-pm.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-56-11-pm.png?w=1509 1509w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-56-11-pm.png?w=150 150w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-56-11-pm.png?w=300 300w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-56-11-pm.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-56-11-pm.png?w=1024 1024w" sizes="(max-width: 756px) 100vw, 756px"></p>
+<pre><code>
+export class SigninComponent implements OnInit {
+    myForm: ControlGroup;
+
+    constructor(private _fb:FormBuilder, private _authService: AuthService, private _router: Router, private _errorService: ErrorService) {}
+
+    onSubmit() {
+        const user = new User(this.myForm.value.email, this.myForm.value.password);
+        this._authService.signin(user)
+            .subscribe(
+                data =&gt; {
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('userId', data.userId);
+                    this._router.navigateByUrl('/');
+                },
+                error =&gt; console.log(error)
+            );
+    }
+
+    ngOnInit() {
+        this.myForm = this._fb.group({
+            email: ['', Validators.compose([
+                Validators.required,
+                this.isEmail
+            ])],
+            password: ['', Validators.required]
+        });
+    }
+
+    private isEmail(control: Control): {[s: string]: boolean} {
+        if (!control.value.match("[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")) {
+            return {invalidMail: true};
+        }
+    }
+}
+</code></pre>
+<p>Here is a service that very simply logs out the user using the pre-existing auth.service logout method. It is called auth/logout.component.ts:</p>
+<p><img data-attachment-id="309" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-28-at-11-57-49-pm/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-57-49-pm.png?w=756" data-orig-size="1196,678" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-28 at 11.57.49 PM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-57-49-pm.png?w=756?w=300" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-57-49-pm.png?w=756?w=756" class="alignnone size-full wp-image-309" src="./16_files/screen-shot-2016-08-28-at-11-57-49-pm.png" alt="Screen Shot 2016-08-28 at 11.57.49 PM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-57-49-pm.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-57-49-pm.png?w=150 150w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-57-49-pm.png?w=300 300w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-57-49-pm.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-57-49-pm.png?w=1024 1024w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-28-at-11-57-49-pm.png 1196w" sizes="(max-width: 756px) 100vw, 756px"></p>
+<p>And lastly, the component which puts together all the other auth ones, authentication.component.ts:</p>
+<p><img data-attachment-id="310" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-29-at-12-01-12-am/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-01-12-am.png?w=756" data-orig-size="1508,1372" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-29 at 12.01.12 AM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-01-12-am.png?w=756?w=300" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-01-12-am.png?w=756?w=756" class="alignnone size-full wp-image-310" src="./16_files/screen-shot-2016-08-29-at-12-01-12-am.png" alt="Screen Shot 2016-08-29 at 12.01.12 AM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-01-12-am.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-01-12-am.png?w=150 150w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-01-12-am.png?w=300 300w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-01-12-am.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-01-12-am.png?w=1024 1024w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-01-12-am.png 1508w" sizes="(max-width: 756px) 100vw, 756px"></p>
+<p>At this point, authentication works. All we have to do is add an error handling aspect. In your assets/app folder add a new folder called errors and create a file called error.ts:</p>
+<p>&nbsp;</p>
+<pre><code>
+export class Error {
+    constructor(public title: string, public message: string) {}
+}
+</code></pre>
+<p>Now, add an error.service.ts:</p>
+<pre><code>
+import { EventEmitter } from "@angular/core";
+
+import { Error } from "./error";
+
+export class ErrorService {
+    errorOccurred = new EventEmitter();
+
+    handleError(error: any) {
+        const errorData = new Error(error.title, error.message);
+        this.errorOccurred.emit(errorData);
+    }
+}
+</code></pre>
+<p>And finally, error.component.ts!</p>
+<p><img data-attachment-id="311" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-29-at-12-05-10-am/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-10-am.png?w=756" data-orig-size="2318,1086" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-29 at 12.05.10 AM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-10-am.png?w=756?w=300" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-10-am.png?w=756?w=756" class="alignnone size-full wp-image-311" src="./16_files/screen-shot-2016-08-29-at-12-05-10-am.png" alt="Screen Shot 2016-08-29 at 12.05.10 AM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-10-am.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-10-am.png?w=1512 1512w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-10-am.png?w=150 150w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-10-am.png?w=300 300w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-10-am.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-10-am.png?w=1024 1024w" sizes="(max-width: 756px) 100vw, 756px"></p>
+<p><img data-attachment-id="312" data-permalink="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/screen-shot-2016-08-29-at-12-05-22-am/" data-orig-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-22-am.png?w=756" data-orig-size="1360,588" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Screen Shot 2016-08-29 at 12.05.22 AM" data-image-description="" data-medium-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-22-am.png?w=756?w=300" data-large-file="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-22-am.png?w=756?w=756" class="alignnone size-full wp-image-312" src="./16_files/screen-shot-2016-08-29-at-12-05-22-am.png" alt="Screen Shot 2016-08-29 at 12.05.22 AM.png" srcset="https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-22-am.png?w=756 756w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-22-am.png?w=150 150w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-22-am.png?w=300 300w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-22-am.png?w=768 768w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-22-am.png?w=1024 1024w, https://knowledgecollisions.files.wordpress.com/2016/08/screen-shot-2016-08-29-at-12-05-22-am.png 1360w" sizes="(max-width: 756px) 100vw, 756px"></p>
+<p>Just update your app.component.ts to include &lt;my-error&gt;&lt;/my-error&gt; after the last div in the template, change all the subscribe method errors to call the errorService handleError() method, and you have completed this MEAN stack tutorial with angular 2! Please post any problems in the comments below. Full code can be found at&nbsp;https://github.com/neelkrishna/mean-house.git!</p>
+		<div id="wordads-preview-parent" class="wpcnt">
+			<div class="wpa">
+				<span class="wpa-about">Advertisements</span>
+				<div class="u">
+					<div class="wpa-notice">
+						<p>Occasionally, some of your visitors may see an advertisement here, <br>as well as a <a href="https://en.support.wordpress.com/cookie-widget/" target="_blank">Privacy &amp; Cookies banner</a> at the bottom of the page.<br>You can hide ads completely by upgrading to one of our paid plans.</p>
+						<p class="wpa-buttons">
+							<a class="wpa-button is-primary" id="wordads-preview-more" href="https://wordpress.com/plans/79964987/?feature=no-adverts&amp;utm_campaign=removeadsnotive" rel="nofollow" target="_blank">Upgrade now</a>
+							<a class="wpa-button" id="wordads-preview-dismiss" href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/#">Dismiss message</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div><div id="jp-post-flair" class="sharedaddy sharedaddy-dark sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-press-this"><a rel="nofollow noopener noreferrer" data-shared="" class="share-press-this sd-button share-icon" href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/?share=press-this&amp;nb=1" target="_blank" title="Click to Press This!"><span>Press This</span></a></li><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-262" class="share-twitter sd-button share-icon" href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/?share=twitter&amp;nb=1" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-262" class="share-facebook sd-button share-icon" href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/?share=facebook&amp;nb=1" target="_blank" title="Click to share on Facebook"><span>Facebook<span class="share-count">5</span></span></a></li><li class="share-google-plus-1"><a rel="nofollow noopener noreferrer" data-shared="sharing-google-262" class="share-google-plus-1 sd-button share-icon" href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/?share=google-plus-1&amp;nb=1" target="_blank" title="Click to share on Google+"><span>Google</span></a></li><li class="share-end"></li></ul></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-79964987-262-5c2123c7a7f2a" data-src="//widgets.wp.com/likes/index.html?ver=20180319#blog_id=79964987&amp;post_id=262&amp;origin=knowledgecollisions.wordpress.com&amp;obj_id=79964987-262-5c2123c7a7f2a" data-name="like-post-frame-79964987-262-5c2123c7a7f2a"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-79964987-262-5c2123c7a7f2a" height="55px" width="100%" frameborder="0" src="./16_files/index.html"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div></div>							</div><!-- .entry-content -->
+
+			<footer class="entry-footer">
+				<span class="cat-links">Posted in <a href="https://knowledgecollisions.wordpress.com/category/uncategorized/" rel="category tag">Uncategorized</a>.</span><span class="edit-link"><a class="post-edit-link" href="https://wordpress.com/post/knowledgecollisions.wordpress.com/262">Edit</a></span>			</footer><!-- .entry-footer -->
+
+			
+<div id="comments" class="comments-area">
+
+	
+	
+	
+		<div id="respond" class="comment-respond js">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="https://knowledgecollisions.wordpress.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+				<input type="hidden" id="highlander_comment_nonce" name="highlander_comment_nonce" value="e2cf974ab3"><input type="hidden" name="_wp_http_referer" value="/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/">
+<input type="hidden" name="hc_post_as" id="hc_post_as" value="wordpress">
+
+<div class="comment-form-field comment-textarea">
+	
+	<div id="comment-form-comment"><textarea tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px; padding: 0px; box-sizing: content-box; overflow-wrap: break-word; overflow: hidden; transition: none 0s ease 0s; height: 0px !important; min-height: 0px !important; font-family: Arial, Helvetica, Tahoma, Verdana, sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; text-decoration: none solid rgba(255, 255, 255, 0.8); word-spacing: 0px; text-indent: 0px; line-height: 21px; width: 734px;" class="autosizejs "></textarea><textarea id="comment" name="comment" title="Enter your comment here..." placeholder="Enter your comment here..." style="height: 125px; overflow: hidden; overflow-wrap: break-word; resize: none;"></textarea></div>
+</div>
+
+<div id="comment-form-identity" style="display: none;">
+	<div id="comment-form-nascar" style="display: none;">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li style="display:none;">
+				<a href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/#comment-form-guest" id="postas-guest" class="nascar-signin-link" title="Login via Guest">
+									</a>
+			</li>
+			<li class="selected">
+				<a href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/#comment-form-load-service:WordPress.com" id="postas-wordpress" class="nascar-signin-link" title="Login via WordPress.com">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24"><rect x="0" fill="none" width="24" height="24"></rect><g><path fill="#FFF" d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.18 2.986-.51-.024-.037-.046-.078-.065-.123l-2.762-7.57zM3.008 12c0 3.56 2.07 6.634 5.068 8.092L3.788 8.342c-.5 1.117-.78 2.354-.78 3.658zm15.06-.454c0-1.112-.398-1.88-.74-2.48-.456-.74-.883-1.368-.883-2.11 0-.825.627-1.595 1.51-1.595.04 0 .078.006.116.008-1.598-1.464-3.73-2.36-6.07-2.36-3.14 0-5.904 1.613-7.512 4.053.21.008.41.012.58.012.94 0 2.395-.114 2.395-.114.484-.028.54.684.057.74 0 0-.487.058-1.03.086l3.275 9.74 1.968-5.902-1.4-3.838c-.485-.028-.944-.085-.944-.085-.486-.03-.43-.77.056-.742 0 0 1.484.114 2.368.114.94 0 2.397-.114 2.397-.114.486-.028.543.684.058.74 0 0-.488.058-1.03.086l3.25 9.665.897-2.997c.456-1.17.684-2.137.684-2.907zm1.82-3.86c.04.286.06.593.06.924 0 .912-.17 1.938-.683 3.22l-2.746 7.94c2.672-1.558 4.47-4.454 4.47-7.77 0-1.564-.4-3.033-1.1-4.314zM12 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"></path></g></svg>				</a>
+			</li>
+			<li>
+			<iframe id="googleplus-sign-in" name="googleplus-sign-in" src="./16_files/saved_resource(9).html" width="24" height="24" scrolling="no" allowtransparency="true" seamless="seamless" frameborder="0"></iframe>
+			</li>
+			<li>
+				<a href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/#comment-form-load-service:Twitter" id="postas-twitter" class="nascar-signin-link" title="Login via Twitter">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24"><rect x="0" fill="none" width="24" height="24"></rect><g><path fill="#FFF" d="M22.23 5.924c-.736.326-1.527.547-2.357.646.847-.508 1.498-1.312 1.804-2.27-.793.47-1.67.812-2.606.996C18.325 4.498 17.258 4 16.078 4c-2.266 0-4.103 1.837-4.103 4.103 0 .322.036.635.106.935-3.41-.17-6.433-1.804-8.457-4.287-.353.607-.556 1.312-.556 2.064 0 1.424.724 2.68 1.825 3.415-.673-.022-1.305-.207-1.86-.514v.052c0 1.988 1.415 3.647 3.293 4.023-.344.095-.707.145-1.08.145-.265 0-.522-.026-.773-.074.522 1.63 2.038 2.817 3.833 2.85-1.404 1.1-3.174 1.757-5.096 1.757-.332 0-.66-.02-.98-.057 1.816 1.164 3.973 1.843 6.29 1.843 7.547 0 11.675-6.252 11.675-11.675 0-.178-.004-.355-.012-.53.802-.578 1.497-1.3 2.047-2.124z"></path></g></svg>				</a>
+			</li>
+			<li>
+				<a href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/#comment-form-load-service:Facebook" id="postas-facebook" class="nascar-signin-link" title="Login via Facebook">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24"><rect x="0" fill="none" width="24" height="24"></rect><g><path fill="#FFF" d="M20.007 3H3.993C3.445 3 3 3.445 3 3.993v16.013c0 .55.445.994.993.994h8.62v-6.97H10.27V11.31h2.346V9.31c0-2.325 1.42-3.59 3.494-3.59.993 0 1.847.073 2.096.106v2.43h-1.438c-1.128 0-1.346.537-1.346 1.324v1.734h2.69l-.35 2.717h-2.34V21h4.587c.548 0 .993-.445.993-.993V3.993c0-.548-.445-.993-.993-.993z"></path></g></svg>				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service" style="">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="./16_files/ad516503a11cd5ca435acc9bb6523536" alt="Gravatar" width="25" class="no-grav" originals="25" scale="2">
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" type="url" value=""></div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./16_files/ad516503a11cd5ca435acc9bb6523536(3).png" alt="Gravatar" width="25" class="no-grav" originals="25" src-orig="https://2.gravatar.com/avatar/8989bc243aa8adccd667c1bfdea56eb3?s=25&amp;d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D25%26amp%3Bd%3Didenticon%26amp%3Bforcedefault%3Dy%26amp%3Br%3DG&amp;r=G" scale="2">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="https://2.gravatar.com/avatar/8989bc243aa8adccd667c1bfdea56eb3?s=25&amp;d=https%3A%2F%2Fs2.wp.com%2Fwp-content%2Fmu-plugins%2Fhighlander-comments%2Fimages%2Fwplogo.png&amp;r=G">
+				<input type="hidden" name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="76223815">
+				<input type="hidden" name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="e05f7a69ef9961e236ef2896034de5684f7e585a">
+						<p class="comment-form-posting-as pa-wordpress">
+			<strong>neelkri93:</strong>
+			You are commenting using your WordPress.com account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;wordpress&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24"><rect x="0" fill="none" width="24" height="24"></rect><g><path fill="#FFF" d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.18 2.986-.51-.024-.037-.046-.078-.065-.123l-2.762-7.57zM3.008 12c0 3.56 2.07 6.634 5.068 8.092L3.788 8.342c-.5 1.117-.78 2.354-.78 3.658zm15.06-.454c0-1.112-.398-1.88-.74-2.48-.456-.74-.883-1.368-.883-2.11 0-.825.627-1.595 1.51-1.595.04 0 .078.006.116.008-1.598-1.464-3.73-2.36-6.07-2.36-3.14 0-5.904 1.613-7.512 4.053.21.008.41.012.58.012.94 0 2.395-.114 2.395-.114.484-.028.54.684.057.74 0 0-.487.058-1.03.086l3.275 9.74 1.968-5.902-1.4-3.838c-.485-.028-.944-.085-.944-.085-.486-.03-.43-.77.056-.742 0 0 1.484.114 2.368.114.94 0 2.397-.114 2.397-.114.486-.028.543.684.058.74 0 0-.488.058-1.03.086l3.25 9.665.897-2.997c.456-1.17.684-2.137.684-2.907zm1.82-3.86c.04.286.06.593.06.924 0 .912-.17 1.938-.683 3.22l-2.746 7.94c2.672-1.558 4.47-4.454 4.47-7.77 0-1.564-.4-3.033-1.1-4.314zM12 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"></path></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./16_files/ad516503a11cd5ca435acc9bb6523536" alt="Google+ photo" width="25" class="no-grav" originals="25" scale="2">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="">
+				<input type="hidden" name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="">
+				<input type="hidden" name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="">
+						<p class="comment-form-posting-as pa-googleplus">
+			<strong></strong>
+			You are commenting using your Google+ account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;googleplus&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" x="0px" y="0px" viewBox="0 0 60 60"><path fill="#FFF" d="M56.3,30c0,-1.6 -0.2,-3.4 -0.6,-5h-3.1H42.2H30v10.6h14.8C44,39.3 42,42 39.1,43.9l8.8,6.8C53,46 56.3,39 56.3,30z"></path><path fill="#FFF" d="M30,57.5c6.7,0 13.1,-2.4 17.9,-6.8l-8.8,-6.8c-2.5,1.6 -5.6,2.4 -9.1,2.4c-7.2,0 -13.3,-4.7 -15.4,-11.2l-9.3,7.1C9.8,51.3 19.1,57.5 30,57.5z"></path><path fill="#FFF" d="M5.3,42.2l9.3,-7.1c-0.5,-1.6 -0.8,-3.3 -0.8,-5.1s0.3,-3.5 0.8,-5.1l-9.3,-7.1C3.5,21.5 2.5,25.6 2.5,30S3.5,38.5 5.3,42.2z"></path><path fill="#FFF" d="M40.1,17.4l8,-8C43.3,5.1 37,2.5 30,2.5C19.1,2.5 9.8,8.7 5.3,17.8l9.3,7.1c2.1,-6.5 8.2,-11.1 15.4,-11.1C33.9,13.7 37.4,15.1 40.1,17.4z"></path></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./16_files/ad516503a11cd5ca435acc9bb6523536" alt="Twitter picture" width="25" class="no-grav" originals="25" scale="2">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="">
+						<p class="comment-form-posting-as pa-twitter">
+			<strong></strong>
+			You are commenting using your Twitter account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;twitter&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24"><rect x="0" fill="none" width="24" height="24"></rect><g><path fill="#FFF" d="M22.23 5.924c-.736.326-1.527.547-2.357.646.847-.508 1.498-1.312 1.804-2.27-.793.47-1.67.812-2.606.996C18.325 4.498 17.258 4 16.078 4c-2.266 0-4.103 1.837-4.103 4.103 0 .322.036.635.106.935-3.41-.17-6.433-1.804-8.457-4.287-.353.607-.556 1.312-.556 2.064 0 1.424.724 2.68 1.825 3.415-.673-.022-1.305-.207-1.86-.514v.052c0 1.988 1.415 3.647 3.293 4.023-.344.095-.707.145-1.08.145-.265 0-.522-.026-.773-.074.522 1.63 2.038 2.817 3.833 2.85-1.404 1.1-3.174 1.757-5.096 1.757-.332 0-.66-.02-.98-.057 1.816 1.164 3.973 1.843 6.29 1.843 7.547 0 11.675-6.252 11.675-11.675 0-.178-.004-.355-.012-.53.802-.578 1.497-1.3 2.047-2.124z"></path></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./16_files/ad516503a11cd5ca435acc9bb6523536" alt="Facebook photo" width="25" class="no-grav" originals="25" scale="2">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="">
+						<p class="comment-form-posting-as pa-facebook">
+			<strong></strong>
+			You are commenting using your Facebook account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;facebook&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24"><rect x="0" fill="none" width="24" height="24"></rect><g><path fill="#FFF" d="M20.007 3H3.993C3.445 3 3 3.445 3 3.993v16.013c0 .55.445.994.993.994h8.62v-6.97H10.27V11.31h2.346V9.31c0-2.325 1.42-3.59 3.494-3.59.993 0 1.847.073 2.096.106v2.43h-1.438c-1.128 0-1.346.537-1.346 1.324v1.734h2.69l-.35 2.717h-2.34V21h4.587c.548 0 .993-.445.993-.993V3.993c0-.548-.445-.993-.993-.993z"></path></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+var highlander_expando_javascript = function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+}
+jQuery(document).ready( highlander_expando_javascript );
+</script>
+
+<div id="comment-form-subscribe" style="display: none;">
+	<p class="comment-subscription-form"><input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;"> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p></div>
+
+<p class="form-submit" style="display: none;"><input name="submit" type="submit" id="comment-submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="262" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="b62549e52f"></p>
+<input type="hidden" name="genseq" value="1545675719">
+<p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1545675720101"></form>
+			</div><!-- #respond -->
+	<div style="clear: both"></div>
+</div><!-- #comments -->
+
+		</div>
+
+		<div class="sidebar">
+			
+<div id="secondary" class="widget-area" role="complementary">
+	<aside id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://knowledgecollisions.wordpress.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search …" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Search">
+			</form></aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h1 class="widget-title">Recent Posts</h1>		<ul>
+											<li>
+					<a href="https://knowledgecollisions.wordpress.com/2018/12/23/how-to-get-rid-of-that-pesky-not-secure-tag-on-your-web-application/">How to Get Rid of that Pesky “Not Secure” Tag on Your Web&nbsp;Application</a>
+									</li>
+											<li>
+					<a href="https://knowledgecollisions.wordpress.com/2017/07/21/car-maintenance-app-part-1-creating-a-helloworld-nodeexpress-server-from-scratch/">Car Maintenance App Part 1: Creating a helloWorld Node/Express Server from&nbsp;scratch</a>
+									</li>
+											<li>
+					<a href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/">Creating a MEAN Application With Authentication Using Angular&nbsp;2</a>
+									</li>
+											<li>
+					<a href="https://knowledgecollisions.wordpress.com/2016/08/27/persisting-user-input-in-android-5-0/">Persisting User Input in Android (&gt;&nbsp;5.0)</a>
+									</li>
+											<li>
+					<a href="https://knowledgecollisions.wordpress.com/2016/03/29/using-recyclerview-and-cardview-in-your-android-app/">Using RecyclerView and CardView in Your Android&nbsp;App</a>
+									</li>
+					</ul>
+		</aside><aside id="recent-comments-2" class="widget widget_recent_comments"><h1 class="widget-title">Recent Comments</h1></aside><aside id="archives-2" class="widget widget_archive"><h1 class="widget-title">Archives</h1>		<ul>
+				<li><a href="https://knowledgecollisions.wordpress.com/2018/12/">December 2018</a></li>
+	<li><a href="https://knowledgecollisions.wordpress.com/2017/07/">July 2017</a></li>
+	<li><a href="https://knowledgecollisions.wordpress.com/2016/08/">August 2016</a></li>
+	<li><a href="https://knowledgecollisions.wordpress.com/2016/03/">March 2016</a></li>
+	<li><a href="https://knowledgecollisions.wordpress.com/2016/02/">February 2016</a></li>
+		</ul>
+			</aside><aside id="categories-2" class="widget widget_categories"><h1 class="widget-title">Categories</h1>		<ul>
+				<li class="cat-item cat-item-332"><a href="https://knowledgecollisions.wordpress.com/category/coding/">Coding</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://knowledgecollisions.wordpress.com/category/uncategorized/">Uncategorized</a>
+</li>
+		</ul>
+			</aside><aside id="meta-2" class="widget widget_meta"><h1 class="widget-title">Meta</h1>			<ul>
+			<li><a href="https://knowledgecollisions.wordpress.com/wp-admin/">Site Admin</a></li>			<li><a href="https://knowledgecollisions.wordpress.com/wp-login.php?action=logout&amp;_wpnonce=3014229292">Log out</a></li>
+			<li><a href="https://knowledgecollisions.wordpress.com/feed/">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://knowledgecollisions.wordpress.com/comments/feed/">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.com/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.com</a></li>			</ul>
+			</aside></div><!-- #secondary -->
+		</div><!-- .sidebar -->
+
+	</article><!-- #post-## -->
+			
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://knowledgecollisions.wordpress.com/2016/08/27/persisting-user-input-in-android-5-0/" rel="prev">Previous Post <span class="screen-reader-text">Persisting User Input in Android (&gt;&nbsp;5.0)</span></a></div><div class="nav-next"><a href="https://knowledgecollisions.wordpress.com/2017/07/21/car-maintenance-app-part-1-creating-a-helloworld-nodeexpress-server-from-scratch/" rel="next">Next Post <span class="screen-reader-text">Car Maintenance App Part 1: Creating a helloWorld Node/Express Server from&nbsp;scratch</span></a></div></div>
+	</nav>
+		
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+
+		<div class="site-info">
+	<a href="https://wordpress.com/?ref=footer_website">Create a free website or blog at WordPress.com.</a>
+	
+	</div><!-- .site-info -->
+
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<!--  -->
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	if ( 'undefined' !== typeof jQuery ) {
+		jQuery( document ).ready( function( $ ) {
+			$( '#wpadminbar' ).on( 'click', function( event ) {
+				var img = '//pixel.wp.com/g.gif?v=wpcom-no-pv&x_adminbar=',
+					clicked = false,
+					target, body, pageLocation;
+
+				target = $( event.target );
+
+				if ( 'undefined' !== typeof target.attr( 'id' ) ) {
+					clicked = target.attr( 'id' );
+				} else if ( 'undefined' !== typeof target.parent().attr( 'id' ) ) {
+					clicked = target.parent().attr( 'id' );
+				} else if ( 'undefined' !== typeof target.offsetParent().attr( 'id' ) ) {
+					clicked = target.offsetParent().attr( 'id' );
+				}
+				if ( 'string' == typeof clicked ) {
+					if ( clicked.indexOf( 'wp-admin-bar-blog-' ) > -1 ) {
+						var suffix = clicked.slice( -2 ),
+							valid = [ '-d', '-n', '-s', '-c', '-v' ];
+						if ( 'wp-admin-bar-blog-stats' != clicked ) {
+							clicked = 'wp-admin-bar-my-sites';
+							if ( -1 !== $.inArray( suffix, valid ) ) {
+								clicked += suffix;
+							}
+						}
+					} else if ( clicked.indexOf( 'wp-admin-bar-theme-' ) > -1 ) {
+						clicked = 'wp-admin-bar-theme';
+					} else if ( clicked.indexOf( 'shortlink' ) > -1 ) {
+						clicked = 'wp-admin-bar-shortlink';
+					}
+				}
+
+				if ( 'string' == typeof clicked && -1 !== $.inArray( clicked, [
+					// Blog
+					'wp-admin-bar-blog',
+					'wp-admin-bar-dashboard-top',
+					'wp-admin-bar-blog-stats',
+					'wp-admin-bar-comments',
+					'wp-admin-bar-edit',
+					'wp-admin-bar-privacy',
+					'wp-admin-bar-priv-exp',
+					'wp-admin-bar-new-post',
+					'wp-admin-bar-edit-post',
+					'wp-admin-bar-new-page',
+					'wp-admin-bar-edit-page',
+					'wp-admin-bar-new-attachment',
+					'wp-admin-bar-edit-attachment',
+					'wp-admin-bar-customize',
+					'wp-admin-bar-widgets',
+					'wp-admin-bar-shortlink',
+					'wp-admin-bar-theme',
+					'wp-admin-bar-wpcom_report_url',
+
+					// Newdash
+					'wp-admin-bar-newdash',
+					'wp-admin-bar-following',
+					'wp-admin-bar-discover-freshly-pressed',
+					'wp-admin-bar-discover-recommended-blogs',
+					'wp-admin-bar-discover-find-friends',
+					'wp-admin-bar-my-activity-my-comments',
+					'wp-admin-bar-my-activity-my-likes',
+
+					// Social
+					'admin-bar-follow-link',
+					'wp-admin-bar-follow',
+					'wp-admin-bar-wpr-reblog',
+					'wp-admin-bar-stats',
+					'wp-admin-bar-store_link',
+
+					// New post
+					'wp-admin-bar-ab-new-post',
+
+					// My account
+					'wp-admin-bar-my-account',
+					'wp-admin-bar-user-info',
+					'wp-admin-bar-user-actions',
+					'wp-admin-bar-find-friends',
+					'wp-admin-bar-manage-blogs',
+					'wp-admin-bar-help',
+					'wp-admin-bar-logout',
+					'wp-admin-bar-my-sites',
+					'wp-admin-bar-my-sites-d',
+					'wp-admin-bar-my-sites-n',
+					'wp-admin-bar-my-sites-s',
+					'wp-admin-bar-my-sites-c',
+					'wp-admin-bar-my-sites-v',
+					'q'
+				] ) ) {
+					clicked = clicked.replace( 'wp-admin-bar-', '' ).replace( 'admin-bar-', '' ).replace( 'adminbar-', '' );
+					body = $( 'body' );
+					if ( body.hasClass( 'single' ) ) {
+						pageLocation = 'single';
+					} else if ( body.hasClass( 'archive' ) ) {
+						pageLocation = 'archive';
+					} else if ( body.hasClass( 'home' ) ) {
+						pageLocation = 'home';
+					} else if ( body.hasClass( 'wp-admin' ) ) {
+						pageLocation = 'wp-admin';
+					} else if ( body.hasClass( 'search' ) ) {
+						pageLocation = 'search';
+					} else if ( body.hasClass( 'error404' ) ) {
+						pageLocation = 'error404';
+					} else {
+						pageLocation = 'unknown-location';
+					}
+
+					new Image().src = img + clicked + '_' + pageLocation + '&rand=' + Math.random();
+				}
+			} );
+		} );
+	}
+	/* ]]> */
+	</script>
+		<script type="text/javascript">
+	/* <![CDATA[ */
+		jQuery(document).ready( function($) {
+			function doFollowingHover() {
+				$('#wp-admin-bar-follow > a').unbind( '.unfollow' );
+
+				$('#wp-admin-bar-follow > a').bind( 'mouseover.unfollow', function() {
+
+					$(this).html( "Unfollow" ).parent( 'li' ).addClass( 'unfollow' );
+				});
+				$('#wp-admin-bar-follow > a').bind( 'mouseout.unfollow', function() {
+					$(this).html( "Following" ).parent( 'li' ).removeClass( 'unfollow' );
+				});
+			}
+							doFollowingHover();
+			
+			$('#wp-admin-bar-follow > a').click( function( e ) {
+				$('#wp-admin-bar-follow > a').unbind( '.unfollow' );
+
+				e.preventDefault();
+
+				var link = $( this ), li = $( '#wp-admin-bar-follow' ), timeout = 0;
+
+				if ( li.hasClass( 'subscribed' ) ) {
+					li.removeClass( 'subscribed' ).removeClass( 'unfollow' );
+					link.html( "Follow" );
+
+					$('body').append( $( 'div.wpcom-bubble' ).removeClass( 'fadein' ) ).off( 'click.bubble' );
+
+					var action = 'ab_unsubscribe_from_blog';
+				} else {
+					li.addClass( 'subscribed' ).removeClass( 'unfollow' );
+					link.html( "Following" );
+
+						var left = 131 - link.width();
+						li.append( $( 'div.wpcom-bubble' ).css( { left: '-' + left + 'px' } ) );
+						$( 'div.bubble-txt', 'div.wpcom-bubble' ).html( "New posts from this blog will now appear in <a target=\"_blank\" href=\"http:\/\/wordpress.com\/\">your reader<\/a>. You can manage email alerts from your <a target=\"_blank\" href=\"http:\/\/wordpress.com\/following\/edit\/\">subscriptions page<\/a>." );
+
+						$( 'div.wpcom-bubble.action-bubble' ).addClass( 'fadein' );
+
+						setTimeout( function() {
+							$('body').on( 'click.bubble touchstart.bubble', function(e) {
+								if ( !$(e.target).hasClass('wpcom-bubble') && !$(e.target).parents( 'div.wpcom-bubble' ).length )
+									hideBubble();
+							});
+							setTimeout( hideBubble, 15000 );
+						}, 500 );
+
+					var action = 'ab_subscribe_to_blog';
+					$('#wp-admin-bar-follow > a').bind( 'mouseout.shift', function() {
+						doFollowingHover();
+						$(this).unbind( '.shift' );
+					});
+				}
+
+				var nonce = link.attr( 'href' ).split( '_wpnonce=' );
+				nonce = nonce[1];
+
+				$.post( "https:\/\/knowledgecollisions.wordpress.com\/wp-admin\/admin-ajax.php", {
+					'action': action,
+					'_wpnonce': nonce,
+					'source': 'admin_bar',
+					'blog_id': 79964987				});
+			});
+		});
+	/* ]]> */
+	</script>
+<script type="text/javascript" src="./16_files/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":"8989bc243aa8adccd667c1bfdea56eb3"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./16_files/wpgroho.js"></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	</div>
+
+	<div id="ab-reblog-box">
+		<form action="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/" name="reblog">
+			<textarea id="reblog-content" name="reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="blogid" id="lblogid">Post to</label>
+
+			<select name="to_blog_id" id="reblog-to-blog-id">
+														<option value="79964987">knowledge collisions</option>
+							</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/" class="cancel">Cancel</a></span>
+				<input type="submit" name="reblog-submit" class="button-primary" id="reblog-submit" value="Reblog Post">
+				<input type="hidden" id="original-blog-id" value="79964987">
+				<input type="hidden" id="original-post-id" value="262">
+			</div>
+
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="3c77f8defe"><input type="hidden" name="_wp_http_referer" value="/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/">		</form>
+
+		<div class="arrow"></div>
+	</div>
+
+	<script type="text/javascript">
+	var wpcom_reblog = {
+		request: false,
+		source: 'toolbar',
+
+		init: function() {
+			// Click reblog button on post
+			jQuery(document).on( 'click', '#wpadminbar .reblog', function(e) {
+				e.preventDefault();
+				wpcom_reblog.source = 'toolbar';
+
+				if ( jQuery( '#wpadminbar #ab-reblog-box' ).is( ':visible' ) ) {
+					wpcom_reblog.cancel_reblog();
+				}
+				else {
+					wpcom_reblog.show_reblog_box();
+				}
+			} );
+
+			// Clicked reblog button on already reblogged post.
+			jQuery(document).on( 'click', '#wpadminbar .reblogged', function(e) {
+				e.preventDefault();
+			});
+
+			// Click cancel reblog button
+			jQuery(document).on( 'click', '#ab-reblog-box a.cancel', function(e) {
+				e.preventDefault();
+				wpcom_reblog.cancel_reblog();
+			});
+
+			// Submit reblog box
+			jQuery(document).on( 'click', '#ab-reblog-box input[type=submit]', function(e) {
+				e.preventDefault();
+				wpcom_reblog.submit_reblog( jQuery(this) );
+			});
+		},
+
+		show_reblog_box: function() {
+			return this.show_reblog_box_here(
+				'#wp-admin-bar-wpr-reblog',
+				'#wpadminbar'
+			);
+		},
+
+		toggle_reblog_box_flair: function( obj_id ) {
+			if ( jQuery( '#jp-post-flair #ab-reblog-box' ).is( ':visible' ) ) {
+				wpcom_reblog.cancel_reblog();
+			}
+			else {
+				wpcom_reblog.show_reblog_box_flair( obj_id );
+			}
+		},
+
+		show_reblog_box_flair: function( obj_id ) {
+			this.source = 'post_flair';
+			this.obj_id = obj_id;
+			return this.show_reblog_box_here(
+				'.post-likes-widget',
+				'body'
+			);
+		},
+
+		show_reblog_box_here: function(anchorId, parentId) {
+			var jq = jQuery,
+			    $anchor = jq( anchorId ),
+			    $parent = jq( parentId ),
+			    $window = jq( window ),
+			    $scroll = jq('html, body'),
+			    $reblog_box = jq( '#ab-reblog-box' ),
+			    offset = $anchor.offset(),
+			    left = offset.left + 'px',
+			    width = '500px',
+			    position,
+			    top;
+
+			if ( $parent.css( 'position' ) === 'fixed' ) {
+				position = 'fixed';
+				top = $parent.position().top + $parent.outerHeight();
+			}
+			else {
+				position = 'absolute';
+				top = offset.top + $anchor.outerHeight() + 'px';
+			}
+			$reblog_box.remove();
+			$parent.append( $reblog_box );
+			$anchor.addClass( 'selected' );
+
+			if ( jq( window ).innerWidth() < offset.left + 500 ) {
+				// Most likely mobile or tablet
+				left = '0px';
+				width = ( jq( window ).innerWidth() - 24 ) + 'px';
+			}
+
+			$reblog_box
+				.find('p.response').remove().end()
+				.find('div.submit, div.submit span.canceltext').show().end()
+				.find('div.submit input[type=submit]').prop('disabled',false).end()
+				.show()
+				.css({
+					top : top,
+					left : left,
+					width : width,
+					position: position,
+					'z-index': 10 // slide under twentyfourteen's fixed-positioned masthead
+				});
+
+			// Ensure we can see the whole reblog box
+			var docViewTop = $window.scrollTop(),
+			    windowHeight = $window.height(),
+			    docViewBottom = docViewTop + windowHeight,
+			    elemTop = $reblog_box.offset().top,
+			    elemHeight = $reblog_box.outerHeight() + 10,
+			    elemBottom = elemTop + elemHeight;
+			if ( docViewTop > elemTop ) {
+				// Need to scroll up
+				// leave 75px for toolbar + Reblog button + margin
+				$scroll.animate({scrollTop: elemTop - 75});
+			}
+			else if ( docViewBottom < elemBottom ) {
+				// Need to scroll down
+				$scroll.animate({scrollTop: elemBottom - windowHeight}, 100);
+			}
+		},
+
+		submit_reblog: function( input ) {
+			var jq = jQuery;
+			var self = this;
+			if ( typeof this.request == 'object' )
+				this.request.abort();
+
+			input.attr( 'value', 'Reblogging...' );
+			input.prop( 'disabled', true );
+
+			jq( '#ab-reblog-box div.submit span.canceltext' ).fadeOut( 150, function() {
+				input.before( '<span class="spinner"></span>' );
+			});
+
+			var note = jq('#ab-reblog-box textarea').val();
+
+			if ( jq('#default-reblog-note').val() == note )
+				note = "";
+
+			this.request = jq.get( '/wp-admin/admin-ajax.php', {
+				'action': 'post_reblog',
+				'original_blog_id': jq('#original-blog-id').val(),
+				'original_post_id': jq('#original-post-id').val(),
+				'blog_id': jq('#ab-reblog-box select').val(),
+				'note': note,
+				'_wpnonce': jq('#ab-reblog-box #_wpnonce').val(),
+				'reblog_source': this.source
+			},
+			function(result, status, jqxhr) {
+				if ( ! ( "type" in result ) ) {
+					alert( "Error: " + jqxhr.responseText );
+				}
+				else if ( "error" == result.type ) {
+					alert( result.message );
+				}
+				else {
+					if ( typeof pm === 'function' ) {
+						console.log(self);
+						pm({
+							target : window.frames['likes-master'],
+							type : 'likesMessage',
+							data : { event: 'didReblog', obj_id: self.obj_id },
+							origin : '*'
+						});
+					}
+
+					jq( '#ab-reblog-box' ).hide();
+					jq( '#wp-admin-bar-wpr-reblog' ).addClass( 'reblogged' ).removeClass( 'reblog' ).find( 'a:first' ).text( 'Reblogged' );
+				}
+			}, 'json' );
+		},
+
+		cancel_reblog: function() {
+			jQuery( '#ab-reblog-box' ).hide();
+			jQuery( '#wp-admin-bar-wpr-reblog' ).removeClass( 'selected' );
+		}
+	};
+
+	wpcom_reblog.init();
+	</script>
+<div id="report-form-window" style="display:none;"></div><script type="text/javascript">
+/* <![CDATA[ */
+var HighlanderComments = {"loggingInText":"Logging In\u2026","submittingText":"Posting Comment\u2026","postCommentText":"Post Comment","connectingToText":"Connecting to %s","commentingAsText":"%1$s: You are commenting using your %2$s account.","logoutText":"Log Out","loginText":"Log In","connectURL":"https:\/\/knowledgecollisions.wordpress.com\/public.api\/connect\/?action=request","logoutURL":"https:\/\/knowledgecollisions.wordpress.com\/wp-login.php?action=logout&_wpnonce=3014229292","homeURL":"https:\/\/knowledgecollisions.wordpress.com\/","postID":"262","gravDefault":"identicon","enterACommentError":"Please enter a comment","enterEmailError":"Please enter your email address here","invalidEmailError":"Invalid email address","enterAuthorError":"Please enter your name here","gravatarFromEmail":"This picture will show whenever you leave a comment. Click to customize it.","logInToExternalAccount":"Log in to use details from one of these accounts.","change":"Change","changeAccount":"Change Account","comment_registration":"0","userIsLoggedIn":"1","isJetpack":"","text_direction":"ltr"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./16_files/saved_resource(5)"></script>
+
+	<div id="carousel-reblog-box">
+		<form action="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/#" name="carousel-reblog">
+			<textarea id="carousel-reblog-content" name="carousel-reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="carousel-reblog-to-blog-id" id="carousel-reblog-lblogid">Post to</label>
+			<select name="carousel-reblog-to-blog-id" id="carousel-reblog-to-blog-id">
+							<option value="79964987">knowledge collisions</option>
+						</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/#" class="cancel">Cancel</a></span>
+				<input type="submit" name="carousel-reblog-submit" class="button" id="carousel-reblog-submit" value="Reblog Post">
+				<input type="hidden" id="carousel-reblog-blog-id" value="79964987">
+				<input type="hidden" id="carousel-reblog-blog-url" value="https://knowledgecollisions.wordpress.com">
+				<input type="hidden" id="carousel-reblog-blog-title" value="knowledge collisions">
+				<input type="hidden" id="carousel-reblog-post-url" value="">
+				<input type="hidden" id="carousel-reblog-post-title" value="">
+			</div>
+
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="3c77f8defe"><input type="hidden" name="_wp_http_referer" value="/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/">		</form>
+
+		<div class="arrow"></div>
+	</div>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/knowledgecollisions.wordpress.com\/2016\/08\/27\/creating-a-mean-application-with-authentication-using-angular-2\/":262};
+	</script>
+				<link rel="stylesheet" id="all-css-0-3" href="./16_files/jetpack-carousel.css" type="text/css" media="all">
+<!--[if lte IE 8]>
+<link rel='stylesheet' id='jetpack-carousel-ie8fix-css'  href='https://s1.wp.com/wp-content/mu-plugins/carousel/jetpack-carousel-ie8fix.css?m=1412618825h&#038;ver=20121024' type='text/css' media='all' />
+<![endif]-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var thickboxL10n = {"next":"Next >","prev":"< Prev","image":"Image","of":"of","close":"Close","noiframes":"This feature requires inline frames. You have iframes disabled or your browser does not support them.","loadingAnimation":"https:\/\/s2.wp.com\/wp-includes\/js\/thickbox\/loadingAnimation.gif"};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var comment_like_text = {"loading":"Loading..."};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wpNotesArgs = {"cacheBuster":"desktop\/2.4.0-13279-g67a63e0","iframeUrl":"https:\/\/widgets.wp.com\/notifications\/","iframeAppend":"2","iframeScroll":"no","wide":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wpcom_tos_report_form = {"ajaxurl":"\/wp-admin\/admin-ajax.php","isLoggedoutUser":"","post_ID":"262","current_url":"https:\/\/knowledgecollisions.wordpress.com\/2016\/08\/27\/creating-a-mean-application-with-authentication-using-angular-2","report_this_content":"Report this content"};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wordads_preview = {"ajaxurl":"https:\/\/knowledgecollisions.wordpress.com\/wp-admin\/admin-ajax.php","blog_id":"79964987","user":"neelkri93","nonce":"f58a2482a5"};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var actionbardata = {"siteID":"79964987","siteName":"knowledge collisions","siteURL":"http:\/\/knowledgecollisions.wordpress.com","icon":"<img alt='' src='https:\/\/s2.wp.com\/i\/logo\/wpcom-gray-white.png' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"1","canCustomizeSite":"1","isFollowing":"1","themeSlug":"pub\/escutcheon","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/knowledgecollisions.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fknowledgecollisions.wordpress.com%2F2016%2F08%2F27%2Fcreating-a-mean-application-with-authentication-using-angular-2%2F","themeURL":"https:\/\/wordpress.com\/theme\/escutcheon\/","xhrURL":"https:\/\/knowledgecollisions.wordpress.com\/wp-admin\/admin-ajax.php","nonce":"23dfa4d35c","isSingular":"1","isFolded":"","isLoggedIn":"1","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"8feebd7fad\" \/>","referer":"https:\/\/knowledgecollisions.wordpress.com\/2016\/08\/27\/creating-a-mean-application-with-authentication-using-angular-2\/","canFollow":"1","feedID":"26571757","statusMessage":"","customizeLink":"https:\/\/knowledgecollisions.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Fknowledgecollisions.wordpress.com%2F2016%2F08%2F27%2Fcreating-a-mean-application-with-authentication-using-angular-2%2F","postID":"262","shortlink":"https:\/\/wp.me\/p5pwxR-4e","canEditPost":"1","editLink":"https:\/\/wordpress.com\/post\/knowledgecollisions.wordpress.com\/262","statsLink":"https:\/\/wordpress.com\/stats\/post\/262\/knowledgecollisions.wordpress.com","i18n":{"view":"View site","follow":"Follow","following":"Following","edit":"Edit","login":"Log in","signup":"Sign up","customize":"Customize","report":"Report this content","themeInfo":"Get help setting up your theme","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editSubs":"Manage subscriptions","viewReader":"View site in Reader","viewReadPost":"View post in Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/knowledgecollisions.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fknowledgecollisions.wordpress.com%2F2016%2F08%2F27%2Fcreating-a-mean-application-with-authentication-using-angular-2%2F\">Log in now.<\/a>","stats":"Stats"}};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"1","lang":"en","ajaxurl":"https:\/\/knowledgecollisions.wordpress.com\/wp-admin\/admin-ajax.php","nonce":"af3fa3d94e","display_exif":"1","display_geo":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"0","require_name_email":"1","login_url":"https:\/\/knowledgecollisions.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fknowledgecollisions.wordpress.com%2F2016%2F08%2F27%2Fcreating-a-mean-application-with-authentication-using-angular-2%2F","blog_id":"79964987","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"local_comments_commenting_as":"<p id=\"jp-carousel-commenting-as\">Commenting as neelkri93<\/p>","reblog":"Reblog","reblogged":"Reblogged","reblog_add_thoughts":"Add your thoughts here... (optional)","reblogging":"Reblogging...","post_reblog":"Post Reblog","stats_query_args":"blog=79964987&v=wpcom&tz=0&user=1&user_id=76223815&subd=knowledgecollisions","is_public":"1","reblog_enabled":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./16_files/saved_resource(6)"></script><div class="widget widget_eu_cookie_law_widget" style="display: block;">
+</div><div id="actionbar" class="actnbr-pub-escutcheon actnbr-has-customize actnbr-has-edit"><ul><li class="actnbr-btn actnbr-customize actnbr-hidden"><a href="https://knowledgecollisions.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fknowledgecollisions.wordpress.com%2F2016%2F08%2F27%2Fcreating-a-mean-application-with-authentication-using-angular-2%2F"><svg class="gridicon gridicon__customize" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z" data-reactid=".2.1.1:0.1b.0"></path></g></svg><span>Customize<span></span></span></a></li><li class="actnbr-btn actnbr-edit actnbr-hidden"><a href="https://wordpress.com/post/knowledgecollisions.wordpress.com/262"><svg class="gridicon gridicon__pencil" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M13 6l5 5-9.507 9.507c-.686-.686-.69-1.794-.012-2.485l-.002-.003c-.69.676-1.8.673-2.485-.013-.677-.677-.686-1.762-.036-2.455l-.008-.008c-.694.65-1.78.64-2.456-.036L13 6zm7.586-.414l-2.172-2.172c-.78-.78-2.047-.78-2.828 0L14 5l5 5 1.586-1.586c.78-.78.78-2.047 0-2.828zM3 18v3h3c0-1.657-1.343-3-3-3z"></path></g></svg><span>Edit</span></a></li><li class="actnbr-btn actnbr-stats actnbr-hidden"><a href="https://wordpress.com/stats/post/262/knowledgecollisions.wordpress.com"><svg class="gridicon gridicon__stats-alt" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M21,21H3v-2h18V21z M8,10H4v7h4V10z M14,3h-4v14h4V3z M20,6h-4v11h4V6z"></path></g></svg><span>Stats</span></a></li><li class="actnbr-ellipsis actnbr-hidden"> 			  <svg class="gridicon gridicon__ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle></g></svg> 			  <div class="actnbr-popover tip tip-top-left actnbr-more"> 			  	<div class="tip-arrow"></div> 			  	<div class="tip-inner"> 				  <ul> 				    <li class="actnbr-sitename actnbr-hidden"><a href="http://knowledgecollisions.wordpress.com/"><img alt="" src="./16_files/wpcom-gray-white.png" class="avatar avatar-50" height="50" width="50" scale="0"> knowledge collisions</a></li> 				   	<li class="actnbr-folded-customize actnbr-hidden"><a href="https://knowledgecollisions.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fknowledgecollisions.wordpress.com%2F2016%2F08%2F27%2Fcreating-a-mean-application-with-authentication-using-angular-2%2F"><svg class="gridicon gridicon__customize" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z" data-reactid=".2.1.1:0.1b.0"></path></g></svg><span>Customize<span></span></span></a></li> 				    <li class="actnbr-folded-follow actnbr-hidden"><a class="actnbr-action actnbr-actn-following" href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/"><svg class="gridicon gridicon__following" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 13.482L15.508 21 12 17.4l1.412-1.388 2.106 2.188 6.094-6.094L23 13.482zm-7.455 1.862L20 10.89V2H2v14c0 1.1.9 2 2 2h4.538l4.913-4.832 2.095 2.176zM8 13H4v-1h4v1zm3-2H4v-1h7v1zm0-2H4V8h7v1zm7-3H4V4h14v2z"></path></g></svg><span>Following</span></a></li> 					 				     				    <li class="actnbr-theme actnbr-hidden"><a href="https://wordpress.com/theme/escutcheon/">Get help setting up your theme</a></li> 				    <li class="actnbr-shortlink actnbr-hidden"><a href="https://wp.me/p5pwxR-4e">Copy shortlink</a></li> 				     				    <li class="actnbr-reader actnbr-hidden"><a href="https://wordpress.com/read/blogs/79964987/posts/262">View post in Reader</a></li> 				    <li class="actnbr-follows actnbr-hidden"><a href="https://wordpress.com/following/edit">Manage subscriptions</a></li> 				     				    <li class="actnbr-fold actnbr-hidden"><a href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/">Collapse this bar</a></li> 			      </ul> 			    </div> 		      </div> 		    </li> 	      </ul></div>
+<script type="text/javascript">
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-google-plus-1', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomgoogle-plus-1', 'menubar=1,resizable=1,width=480,height=550' );
+				return false;
+			});
+</script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>		<iframe src="./16_files/master.html" scrolling="no" id="likes-master" name="likes-master" style="display:none;"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+<script src="./16_files/w(1).js" type="text/javascript" async="" defer=""></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['identifyUser', 76223815, 'neelkri93']);
+_tkq.push(['storeContext', {'blog_id':'79964987','blog_tz':'0','user_lang':'en','blog_lang':'en'}]);
+_stq.push(['view', {'blog':'79964987','v':'wpcom','tz':'0','user':'1','user_id':'76223815','post':'262','subd':'knowledgecollisions'}]);
+_stq.push(['extra', {'crypt':'UE40eW5QN0p8M2Y/RE1zNDZ8S252Wis9XUQyb3YrcUVIU2R0VH5TcUpqcF9NWi1bMDJfLy90VXNvY2U3ZFZ1RWlDZ2dfWmwuT1t4S2ljMDRXLTFmU0wsZU1pLTBLJmg9WSx6aU00VWxbJS1jMm10bnU3LXxFJWR0V11BLSxiU0ZYdjNsX2pPK0V1ej9ieW1veDB5MnBIcWh3cjFPUG9aTXRQUVUtZVNlMmx2WHlBeVUwNno4c0psYV0zPWxteV1bYmRlRGF+VkdycmhWM2czcVNnfGJtMEUuQk85diZPV1B4blFsSzgrM0pDSmlbSi9VZU5kUDY3bDZwcSs9dSZdYkhMLGppRVNkcVNwZ34wM09xc1gyQ3BfT2JHaj8xajl4SVVGOVFXWCVzRDZqK2d6UlZC'}]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+		<div id="wpadminbar" class="ltr">
+							<a class="screen-reader-shortcut" href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/#wp-toolbar" tabindex="1">Skip to toolbar</a>
+						<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="Toolbar" tabindex="0">
+						<ul id="wp-admin-bar-root-default" class="ab-top-menu">
+			
+		<li id="wp-admin-bar-blog" class="menupop my-sites mb-trackable"><a class="ab-item" aria-haspopup="true" href="https://wordpress.com/stats/knowledgecollisions.wordpress.com">My Site</a>			<div class="ab-sub-wrapper">		<ul id="wp-admin-bar-blog-default" class="ab-submenu">
+			
+		<li id="wp-admin-bar-blog-info" class="current-site"><a class="ab-item" href="https://knowledgecollisions.wordpress.com/"><div class="ab-site-icon"></div><span class="ab-site-title">knowledge collisions</span><span class="ab-site-description">knowledgecollisions.wordpress.com</span></a>		</li>
+		<li id="wp-admin-bar-blog-stats" class="mb-icon"><a class="ab-item" href="https://wordpress.com/stats/knowledgecollisions.wordpress.com">Stats <img style="width: 95px; margin: 0; float: right;" src="./16_files/admin-bar-hours-scale-2x.php" alt="Stats" title="Showing site views per hour for the last 48 hours. Click for full Site Stats." scale="0"></a>		</li>
+		<li id="wp-admin-bar-activity" class="mb-icon"><a class="ab-item" href="https://wordpress.com/activity-log/knowledgecollisions.wordpress.com">Activity</a>		</li>
+		<li id="wp-admin-bar-plan" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/plans/knowledgecollisions.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-plan">Plan</a><a href="https://wordpress.com/plans/knowledgecollisions.wordpress.com" class="ab-secondary" id="wp-admin-bar-plan-badge">Free</a></div>		</li>		</ul>
+			<ul id="wp-admin-bar-publish" class="ab-submenu">
+			
+		<li id="wp-admin-bar-publish-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Manage</div>		</li>
+		<li id="wp-admin-bar-new-page" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/pages/knowledgecollisions.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-edit-page">Site Pages</a><a href="https://wordpress.com/page/knowledgecollisions.wordpress.com" class="ab-secondary" id="wp-admin-bar-new-page-badge">Add</a></div>		</li>
+		<li id="wp-admin-bar-new-post" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/posts/knowledgecollisions.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-edit-post">Blog Posts</a><a href="https://wordpress.com/post/knowledgecollisions.wordpress.com" class="ab-secondary" id="wp-admin-bar-new-post-badge">Add</a></div>		</li>
+		<li id="wp-admin-bar-new-attachment" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/media/knowledgecollisions.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-edit-attachment">Media</a><a href="https://wordpress.com/media/knowledgecollisions.wordpress.com" class="ab-secondary" id="wp-admin-bar-new-attachment-badge">Add</a></div>		</li>
+		<li id="wp-admin-bar-comments" class="mb-icon"><a class="ab-item" href="https://wordpress.com/comments/knowledgecollisions.wordpress.com">Comments</a>		</li>		</ul>
+			<ul id="wp-admin-bar-look-and-feel" class="ab-submenu">
+			
+		<li id="wp-admin-bar-look-and-feel-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Personalize</div>		</li>
+		<li id="wp-admin-bar-themes" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://knowledgecollisions.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fknowledgecollisions.wordpress.com%2F2016%2F08%2F27%2Fcreating-a-mean-application-with-authentication-using-angular-2%2F" class="ab-item ab-primary mb-icon" id="wp-admin-bar-cmz">Customize</a><a href="https://wordpress.com/themes/knowledgecollisions.wordpress.com" class="ab-secondary" id="wp-admin-bar-themes">Themes</a></div>		</li>		</ul>
+			<ul id="wp-admin-bar-configuration" class="ab-submenu">
+			
+		<li id="wp-admin-bar-configuration-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Configure</div>		</li>
+		<li id="wp-admin-bar-sharing" class="mb-icon"><a class="ab-item" href="https://wordpress.com/sharing/knowledgecollisions.wordpress.com">Sharing</a>		</li>
+		<li id="wp-admin-bar-users-toolbar" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/people/team/knowledgecollisions.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-people">People</a><a href="https://wordpress.com/people/new/knowledgecollisions.wordpress.com" class="ab-secondary" id="wp-admin-bar-people-add">Add</a></div>		</li>
+		<li id="wp-admin-bar-plugins"><a class="ab-item" href="https://wordpress.com/plugins/wpcom-masterbar-redirect/knowledgecollisions.wordpress.com">Plugins</a>		</li>
+		<li id="wp-admin-bar-domains" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/domains/knowledgecollisions.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-domains">Domains</a><a href="https://wordpress.com/domains/add/knowledgecollisions.wordpress.com" class="ab-secondary" id="wp-admin-bar-domains-add">Add</a></div>		</li>
+		<li id="wp-admin-bar-blog-settings" class="mb-icon"><a class="ab-item" href="https://wordpress.com/settings/general/knowledgecollisions.wordpress.com">Settings</a>		</li>
+		<li id="wp-admin-bar-legacy-dashboard" class="mb-icon"><a class="ab-item" href="https://knowledgecollisions.wordpress.com/wp-admin/">WP Admin</a>		</li>
+		<li id="wp-admin-bar-new-site"><a class="ab-item" href="https://wordpress.com/start?ref=admin-bar-logged-in">+ Add New WordPress</a>		</li>		</ul>
+	</div>		</li>
+		<li id="wp-admin-bar-jumptotop-button-menu"><a class="ab-item" href="https://knowledgecollisions.wordpress.com/2016/08/27/creating-a-mean-application-with-authentication-using-angular-2/#"><div id="jumptotop" style="top: 0px;"><span class="noticon noticon-top"></span></div></a>		</li>
+		<li id="wp-admin-bar-newdash" class="menupop mb-trackable"><a class="ab-item" aria-haspopup="true" href="https://wordpress.com/">Reader</a>			<div class="ab-sub-wrapper">		<ul id="wp-admin-bar-newdash-default" class="ab-submenu">
+			
+		<li id="wp-admin-bar-streams-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Streams</div>		</li>
+		<li id="wp-admin-bar-following" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/" class="ab-item ab-primary mb-icon" id="wp-admin-bar-followed-sites">Followed Sites</a><a href="https://wordpress.com/following/edit" class="ab-secondary" id="wp-admin-bar-reader-followed-sites-manage">Manage</a></div>		</li>
+		<li id="wp-admin-bar-conversations" class="mb-icon"><a class="ab-item" href="http://wordpress.com/read/conversations">Conversations</a>		</li>
+		<li id="wp-admin-bar-discover-discover" class="mb-icon-spacer"><a class="ab-item" href="https://wordpress.com/discover">Discover</a>		</li>
+		<li id="wp-admin-bar-discover-search" class="mb-icon-spacer"><a class="ab-item" href="https://wordpress.com/read/search">Search</a>		</li>
+		<li id="wp-admin-bar-my-activity-my-likes" class="mb-icon-spacer"><a class="ab-item" href="https://wordpress.com/activities/likes">My Likes</a>		</li>		</ul>
+	</div>		</li>		</ul>
+			<ul id="wp-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
+			
+		<li id="wp-admin-bar-notes" class="menupop">		<div class="ab-item ab-empty-item"><span id="wpnt-notes-unread-count" class="wpnt-loading wpn-read"></span><span class="noticon noticon-bell"></span><span class="ab-text">Notifications</span></div><div id="wpnt-notes-panel2" style="display:none" lang="en" dir="ltr" class="wide"><iframe style="" id="wpnt-notes-iframe2" frameborder="0" allowtransparency="true" scrolling="no" src="./16_files/saved_resource(10).html" class="wide"></iframe></div>		</li>
+		<li id="wp-admin-bar-my-account" class="menupop with-avatar mb-trackable no-grav"><a class="ab-item" aria-haspopup="true" href="https://wordpress.com/me/"><img alt="" src="./16_files/8989bc243aa8adccd667c1bfdea56eb3.png" class="avatar avatar-32" height="32" width="32" originals="32" src-orig="https://2.gravatar.com/avatar/8989bc243aa8adccd667c1bfdea56eb3?s=32&amp;d=mm&amp;r=G" scale="2"><span class="ab-text">Me</span></a>			<div class="ab-sub-wrapper">		<ul id="wp-admin-bar-user-actions" class="ab-submenu">
+			
+		<li id="wp-admin-bar-user-info" class="user-info user-info-item">		<div class="ab-item ab-empty-item" tabindex="-1"><img alt="" src="./16_files/8989bc243aa8adccd667c1bfdea56eb3(1).png" class="avatar avatar-128" height="128" width="128" originals="128" src-orig="https://2.gravatar.com/avatar/8989bc243aa8adccd667c1bfdea56eb3?s=128&amp;d=mm&amp;r=G" scale="2"><span class="display-name">neelkri93</span><a class="username" href="http://gravatar.com/neelkri93">@neelkri93</a><form action="https://knowledgecollisions.wordpress.com/wp-login.php?action=logout&amp;redirect_to=https%3A%2F%2Fwordpress.com%2F%3Fapppromo&amp;_wpnonce=3014229292" method="post"><button class="ab-sign-out" type="submit">Sign Out</button></form></div>		</li>
+		<li id="wp-admin-bar-profile-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Profile</div>		</li>
+		<li id="wp-admin-bar-my-profile" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me">My Profile</a>		</li>
+		<li id="wp-admin-bar-account-settings" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/account">Account Settings</a>		</li>
+		<li id="wp-admin-bar-billing" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/purchases">Manage Purchases</a>		</li>
+		<li id="wp-admin-bar-security" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/security">Security</a>		</li>
+		<li id="wp-admin-bar-notifications" class="mb-icon mb-trackable"><a class="ab-item" href="https://wordpress.com/me/notifications">Notifications</a>		</li>
+		<li id="wp-admin-bar-special-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Special</div>		</li>
+		<li id="wp-admin-bar-get-apps" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/get-apps">Get Apps</a>		</li>
+		<li id="wp-admin-bar-help" class="mb-icon"><a class="ab-item" href="https://wordpress.com/help">Help</a>		</li>		</ul>
+	</div>		</li>
+		<li id="wp-admin-bar-ab-new-post" class="mb-trackable"><a class="ab-item" href="https://wordpress.com/post/knowledgecollisions.wordpress.com"><span>Write</span></a>		</li>		</ul>
+				</div>
+							<a class="screen-reader-shortcut" href="https://knowledgecollisions.wordpress.com/wp-login.php?action=logout&amp;_wpnonce=3014229292">Log Out</a>
+					</div>
+
+	
+<img src="./16_files/g.gif" alt=":)" id="wpstats" scale="0"><script type="text/javascript">
+/* <![CDATA[ */
+var clickDebugLink;
+
+jQuery(document).ready( function($) {
+	var single = true, w = 1000,
+		supe = false;
+
+	$(document.body).load(function(){ $('#wpadminbar img.grav-hashed').removeClass('grav-hashed'); }); // hack to hide the gravatar hovercard
+
+	if ( single && supe )
+		w = 1385;
+	else if ( supe )
+		w = 1200;
+
+	// debug bar extra
+	clickDebugLink = function( parent_id, obj ) {
+
+		$('#'+parent_id).children('div').hide();
+
+		document.getElementById( obj.href.substr( obj.href.indexOf( '#' ) + 1 ) ).style.display = 'block';
+		$( obj.href.substr( obj.href.indexOf( '#' ) ) ).show()
+
+		$(obj).parent().addClass('current').siblings('li').removeClass('current');
+
+		return false;
+	};
+
+	$( '#wpadminbar #wp-admin-bar-shortlink' ).click( function() {
+		$( '#adminbar-shortlink-input' ).select();
+	});
+
+	// skip tap-to-hover on site switcher for mobile
+	if ( 'ontouchstart' in window ) {
+		$('#wp-admin-bar-switch-site').on( 'touchstart', function( event ) {
+			if ( $( window ).width() > 782 ) {
+				return;
+			}
+			event.stopPropagation();
+			$( event.target ).first( 'a' ).click();
+		});
+	}
+
+});
+/* ]]> */
+</script>
+	<div class="wpcom-bubble action-bubble">
+		<div class="bubble-txt"></div>
+	</div>
+	<script type="text/javascript">function hideBubble() { jQuery('body').append( jQuery( 'div.wpcom-bubble' ).removeClass( 'fadein' ) ).off( 'click.bubble touchstart.bubble' ); jQuery(document).off( 'scroll.bubble' ); };</script>
+		<script type="text/javascript">
+	jQuery( '#wp-admin-bar-jumptotop-button-menu a' ).click( function( e ) {
+		e.preventDefault();
+		jQuery( 'html, body' ).animate( { scrollTop: 0 }, 'fast' );
+	} );
+	function hideShowTbJumpToTop() {
+		var total_width = 0;
+		// Calculate total width taken by items minus our button to see if it'll
+		// overlap with other toolbar menus.
+		jQuery( '#wp-admin-bar-root-default > li' ).each( function() {
+			var self = jQuery( this );
+			if ( 'wp-admin-bar-jumptotop-button-menu' != self.attr( 'id' ) )
+				total_width += self.width();
+		});
+		if ( jQuery( '#wp-admin-bar-jumptotop-button-menu' ).position()['left'] - total_width < 10 ) {
+			jQuery( '#jumptotop' ).animate( { 'top': '-50px' }, 'fast' );
+		} else if (  jQuery( window ).scrollTop() >= 350 && parseInt( jQuery( '#jumptotop' ).css( 'top' ) ) < 0 ) {
+			if ( jQuery( '#wp-admin-bar-jumptotop-button-menu' ).position()['left'] - total_width < 10 )
+			   return;
+			jQuery( '#jumptotop' ).animate( { 'top': 0 }, 'fast' );
+		} else if (  jQuery( window ).scrollTop() < 1 && parseInt( jQuery( '#jumptotop' ).css( 'top' ) ) >= 0 ) {
+			jQuery( '#jumptotop' ).animate( { 'top': '-50px' }, 'fast' );
+		}
+	}
+	// handle on page load if auto scrolling to a position
+	hideShowTbJumpToTop();
+	// bind to scrolll event
+	var jumpToTopTimer = null;
+	jQuery( window ).scroll( function() {
+		clearTimeout( jumpToTopTimer );
+		jumpToTopTimer = setTimeout( jumpToTopRefresh, 150 );
+	} );
+	var jumpToTopRefresh = function() {
+		hideShowTbJumpToTop();
+	};
+	</script>
+	<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+
+
+<div class="comment-likes-overlay" style="display: none;"></div></body><div><div class="gr_-editor gr-iframe-first-load" style="display: none;"><div class="gr_-editor_back"></div><iframe class="gr_-ifr gr-_dialog-content" src="./16_files/saved_resource(11).html"></iframe></div></div><grammarly-card><div></div></grammarly-card><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>
