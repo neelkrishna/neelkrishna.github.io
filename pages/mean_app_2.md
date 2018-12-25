@@ -1,6 +1,6 @@
 # CREATING A MEAN APPLICATION WITH AUTHENTICATION USING ANGULAR 2: Part 2
 
-Welcome to part 2 of this tutorial! In this part, we'll get started on the Angular app.  If you missed part 1, check it out [here.](/pages/mean_app_2)
+Welcome to part 2 of this tutorial! In this part, we'll get started on the Angular app.  If you missed part 1, check it out [here.](/pages/mean_app)
 
 Let’s start by creating a simple house object. Within the assets/app folder, create a new folder called houses, and within that a new file called **house.ts:**
 
