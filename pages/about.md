@@ -1,1 +1,1 @@
-About Me
+![Me](../assets/images/about/me.png)
