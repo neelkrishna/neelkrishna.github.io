@@ -1,6 +1,6 @@
 # CREATING A MEAN APPLICATION WITH AUTHENTICATION USING ANGULAR 2: Part 2
 
-Welcome to part 2 of this tutorial! In this part, we'll get started on the Angular app.  If you missed part 1, check it out [here.](./pages/mean_app_2)
+Welcome to part 2 of this tutorial! In this part, we'll get started on the Angular app.  If you missed part 1, check it out [here.](/pages/mean_app_2)
 
 Let’s start by creating a simple house object. Within the assets/app folder, create a new folder called houses, and within that a new file called **house.ts:**
 
@@ -433,4 +433,4 @@ Here is the code for **header.component.ts:**
 
 Make sure your **boot.ts** file imports and bootstraps all the services we have created so far. At this point you should be able to fire up the application (ctrl + c and npm start in the terminal, also do the same for the npm run gulp command) and see it working with all four crud operations for houses and bedrooms. The UI should be clean. If you are not experiencing seamless navigation and persistance, check your browser console *(right-click –> inspect –> console in Chrome)* and Google the error, or post it in the comments below!
 
-Click [here](./pages/mean_app_3) to continue to part 3.
+Click [here](/pages/mean_app_3) to continue to part 3.

@@ -1,6 +1,6 @@
 # CREATING A MEAN APPLICATION WITH AUTHENTICATION USING ANGULAR 2: Part 3
 
-If you missed parts [1](./pages/mean_app_1) and [2](./pages/mean_app_2) of this tutorial, please go back and look at them first!
+If you missed parts [1](/pages/mean_app_1) and [2](/pages/mean_app_2) of this tutorial, please go back and look at them first!
 
 There are two major things left to finish this application: **Authentication** and **Error Handling**. Starting with authentication, let’s go back to the NodeJS server and in models, add a new file called **user.js:**
 
