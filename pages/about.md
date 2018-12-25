@@ -1,1 +1,1 @@
--> ![Me](../assets/images/about/me.png = 400x) <-
+-> ![Me](../assets/images/about/me.png) <-
